@@ -15,7 +15,8 @@ namespace Infrastructure
 
         public string Run(string input, string user)
         {
-            if (!int.TryParse(input, out int pluginNumber) || pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0) {
+            if (!int.TryParse(input, out int pluginNumber) || pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            {
                 return new PluginsMenu().PlaginsHelp();
             }
 
