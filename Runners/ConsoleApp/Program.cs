@@ -2,6 +2,7 @@
 using BasePlugin.Interfaces;
 using BasePlugin.Records;
 using CountDown;
+using Dals;
 using DiceRoller;
 using Infrastructure;
 using System;
@@ -14,8 +15,11 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var plugin = new PluginsManager().CreatePlugin(CountDownPlugin._Id);
-            plugin.Execute("", null, null);
+            var host = new Host(new MemoryDal());
+            Console.WriteLine(host.Run("3", ""));
+            Console.WriteLine(host.Run("3", ""));
+            Console.WriteLine(host.Run("7", ""));
+
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
         }

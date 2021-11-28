@@ -1,5 +1,6 @@
 ﻿using BasePlugin.Interfaces;
 using CountDown;
+using Counter;
 using DiceRoller;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,21 @@ namespace Infrastructure
             {
                 return new DiceRollerPlugin();
             }
+            else if (id == CounterPlugin._Id)
+            {
+                return new CounterPlugin();
+            }
             else
             {
                 throw new NotImplementedException();
             }
         }
+
+        static public readonly IReadOnlyList<string> plugins = new List<string>
+        {
+            DiceRollerPlugin._Id,
+            CountDownPlugin._Id,
+            CounterPlugin._Id
+        };
     }
 }
