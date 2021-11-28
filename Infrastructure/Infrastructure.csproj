@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plugins\CountDown\CountDown.csproj" />
+    <ProjectReference Include="..\Plugins\Counter\Counter\Counter.csproj" />
     <ProjectReference Include="..\Plugins\DiceRoller\DiceRoller.csproj" />
     <ProjectReference Include="..\Shared\BasePlugin\BasePlugin.csproj" />
+    <ProjectReference Include="..\Shared\Dal\Dal\Dal.csproj" />
   </ItemGroup>
 
 </Project>

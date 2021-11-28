@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Dals\Dals.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\..\Plugins\CountDown\CountDown.csproj" />
     <ProjectReference Include="..\..\Plugins\DiceRoller\DiceRoller.csproj" />
