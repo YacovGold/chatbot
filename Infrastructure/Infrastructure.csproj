@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plugins\CountDown\CountDown.csproj" />
+    <ProjectReference Include="..\Plugins\DiceRoller\DiceRoller.csproj" />
+    <ProjectReference Include="..\Shared\BasePlugin\BasePlugin.csproj" />
+  </ItemGroup>
+
+</Project>
