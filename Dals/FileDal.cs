@@ -6,11 +6,9 @@ namespace Dals
 {
     public class FileDal : IDal
     {
-
         public void SaveData(string userData, string pluginId, string data)
         {
             File.WriteAllText(CreatePath(userData, pluginId), data);
-
         }
 
         public string LoadData(string userData, string pluginId)
@@ -24,6 +22,7 @@ namespace Dals
 
             return null;
         }
-        string CreatePath(string userData, string pluginId) => $"./Data/{pluginId}/{userData}.???";
+ 
+        string CreatePath(string userData, string pluginId) => $"./Data/{pluginId}/{userData}.txt";
     }
 }
