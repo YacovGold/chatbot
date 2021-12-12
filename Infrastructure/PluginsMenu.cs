@@ -16,5 +16,6 @@ namespace Infrastructure
             var result = string.Join("\r\n", lines);
             return result;
         }
+
     }
 }
