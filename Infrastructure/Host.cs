@@ -24,7 +24,7 @@ namespace Infrastructure
             var plugin = new PluginsManager().CreatePlugin(pluginId);
             var session = _dal.LoadData(user, pluginId);
 
-            var output = plugin.Execute("", session, null);
+            var output = plugin.Execute(input, session, null);
             _dal.SaveData(user, pluginId, output.Session);
 
             return output.Message;
