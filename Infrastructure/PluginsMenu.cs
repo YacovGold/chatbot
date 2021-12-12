@@ -11,7 +11,7 @@ namespace Infrastructure
     {
         public string PlaginsHelp()
         {
-            var lines = PluginsManager.plugins.Select((p, i) => i + 1 + ". " + p);
+            var lines = PluginsManager.plugins.Select((p, i) => $"{i + 1}. {p}");
             var result = string.Join("\r\n", lines);
             return result;
         }
