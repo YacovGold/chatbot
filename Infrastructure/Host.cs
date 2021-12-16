@@ -10,18 +10,25 @@ namespace Infrastructure
     public class Host
     {
         private IDal _dal;
+        private PluginsMenu _pluginsMenu;
+        private PluginsManager _pluginsManager;
 
-        public Host(IDal dal) => _dal = dal;
+        public Host(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
+        {
+            _dal = dal;
+            _pluginsMenu = pluginsMenu;
+            _pluginsManager = pluginsManager;
+        }
 
         public string Run(string input, string user)
         {
             if (!int.TryParse(input, out int pluginNumber) || pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
             {
-                return new PluginsMenu().PlaginsHelp();
+                return _pluginsMenu.PlaginsHelp();
             }
 
             var pluginId = PluginsManager.plugins[pluginNumber - 1];
-            var plugin = new PluginsManager().CreatePlugin(pluginId);
+            var plugin = _pluginsManager.CreatePlugin(pluginId);
             var session = _dal.LoadData(user, pluginId);
 
             var output = plugin.Execute(input, session, null);
