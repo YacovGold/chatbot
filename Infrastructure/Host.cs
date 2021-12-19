@@ -22,14 +22,19 @@ namespace Infrastructure
 
         public string Run(string input, string user)
         {
-            if (!int.TryParse(input, out int pluginNumber))
+            if (input.ToLower() == "help")
             {
                 return _pluginsMenu.PlaginsHelp();
             }
 
-            if(pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            if (!int.TryParse(input, out int pluginNumber))
             {
-                throw new ArgumentOutOfRangeException(nameof(pluginNumber), $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.");
+                return "This option is not recognized, please type help to see the options.";
+            }
+
+            if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            {
+                return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
             }
 
             var pluginId = PluginsManager.plugins[pluginNumber - 1];
