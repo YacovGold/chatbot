@@ -46,18 +46,19 @@ namespace Infrastructure
 
                 string pluginId = PluginsManager.plugins[pluginNumber - 1];
                 IPlugin plugin = _pluginsManager.CreatePlugin(pluginId);
-                _callbacks.StartSession = () => _currentPlugin = plugin;
-
-                string session = _dal.LoadData(user, pluginId);
-                PluginOutput output = plugin.Execute("", session, _callbacks);
-                _dal.SaveData(user, pluginId, output.Session);
-
-                return output.Message;
+                return Execute(plugin, pluginId, "", user);
             }
             else
             {
                 IPlugin plugin = _currentPlugin;
                 string pluginId = _currentPlugin.Id;
+                return Execute(plugin, pluginId, input, user);
+            }
+        }
+
+        private string Execute(IPlugin plugin, string pluginId, string input, string user)
+        {
+                _callbacks.StartSession = () => _currentPlugin = plugin;
                 _callbacks.EndSession = () => _currentPlugin = null;
 
                 string session = _dal.LoadData(user, pluginId);
@@ -65,7 +66,6 @@ namespace Infrastructure
                 _dal.SaveData(user, pluginId, output.Session);
 
                 return output.Message;
-            }
         }
     }
 }
