@@ -1,4 +1,6 @@
-﻿using Dal;
+﻿using BasePlugin.Interfaces;
+using BasePlugin.Records;
+using Dal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,12 @@ namespace Infrastructure
 {
     public class Host
     {
-        private IDal _dal;
-        private PluginsMenu _pluginsMenu;
-        private PluginsManager _pluginsManager;
+        private readonly IDal _dal;
+        private readonly PluginsMenu _pluginsMenu;
+        private readonly PluginsManager _pluginsManager;
+
+        private readonly Callbacks _callbacks = new();
+        private IPlugin _currentPlugin;
 
         public Host(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
         {
@@ -22,29 +27,45 @@ namespace Infrastructure
 
         public string Run(string input, string user)
         {
-            if (input.ToLower() == "help")
+            if (_currentPlugin == null)
             {
-                return _pluginsMenu.PlaginsHelp();
-            }
+                if (input.ToLower() == "help")
+                {
+                    return _pluginsMenu.PlaginsHelp();
+                }
 
-            if (!int.TryParse(input, out int pluginNumber))
+                if (!int.TryParse(input, out int pluginNumber))
+                {
+                    return "This option is not recognized, please type help to see the options.";
+                }
+
+                if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+                {
+                    return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
+                }
+
+                string pluginId = PluginsManager.plugins[pluginNumber - 1];
+                IPlugin plugin = _pluginsManager.CreatePlugin(pluginId);
+                return Execute(plugin, pluginId, "", user);
+            }
+            else
             {
-                return "This option is not recognized, please type help to see the options.";
+                IPlugin plugin = _currentPlugin;
+                string pluginId = _currentPlugin.Id;
+                return Execute(plugin, pluginId, input, user);
             }
+        }
 
-            if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
-            {
-                return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
-            }
+        private string Execute(IPlugin plugin, string pluginId, string input, string user)
+        {
+                _callbacks.StartSession = () => _currentPlugin = plugin;
+                _callbacks.EndSession = () => _currentPlugin = null;
 
-            var pluginId = PluginsManager.plugins[pluginNumber - 1];
-            var plugin = _pluginsManager.CreatePlugin(pluginId);
-            var session = _dal.LoadData(user, pluginId);
+                string session = _dal.LoadData(user, pluginId);
+                PluginOutput output = plugin.Execute(input, session, _callbacks);
+                _dal.SaveData(user, pluginId, output.Session);
 
-            var output = plugin.Execute(input, session, null);
-            _dal.SaveData(user, pluginId, output.Session);
-
-            return output.Message;
+                return output.Message;
         }
     }
 }
