@@ -22,7 +22,7 @@ namespace Echo
             }
             else if (input.ToLower() == "exit")
             {
-                callbacks.StartSession();
+                callbacks.EndSession();
                 return new PluginOutput("Echo stopped.", null);
             }
             else
