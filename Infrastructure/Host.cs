@@ -11,12 +11,13 @@ namespace Infrastructure
 {
     public class Host
     {
+        const string ACTIVE_SESSION = "active session plugin";
+
         private readonly IDal _dal;
         private readonly PluginsMenu _pluginsMenu;
         private readonly PluginsManager _pluginsManager;
 
         private readonly Callbacks _callbacks = new();
-        private IPlugin _currentPlugin;
 
         public Host(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
         {
@@ -27,8 +28,8 @@ namespace Infrastructure
 
         public string Run(string input, string user)
         {
-            var currentPluginId = _dal.LoadData(user, pluginId, output.Session);
-            if (_currentPlugin == null)
+            var currentPluginId = _dal.LoadData(user, ACTIVE_SESSION);
+            if (currentPluginId == null)
             {
                 if (input.ToLower() == "help")
                 {
@@ -46,27 +47,25 @@ namespace Infrastructure
                 }
 
                 string pluginId = PluginsManager.plugins[pluginNumber - 1];
-                IPlugin plugin = _pluginsManager.CreatePlugin(pluginId);
-                return Execute(plugin, pluginId, "", user);
+                return Execute(pluginId, string.Empty, user);
             }
             else
             {
-                IPlugin plugin = _currentPlugin;
-                string pluginId = _currentPlugin.Id;
-                return Execute(plugin, pluginId, input, user);
+                return Execute(currentPluginId, input, user);
             }
         }
 
-        private string Execute(IPlugin plugin, string pluginId, string input, string user)
+        private string Execute(string pluginId, string input, string user)
         {
-                _callbacks.StartSession = () => _currentPlugin = plugin;
-                _callbacks.EndSession = () => _currentPlugin = null;
+            _callbacks.StartSession = () => _dal.SaveData(user, ACTIVE_SESSION, pluginId);
+            _callbacks.EndSession = () => _dal.SaveData(user, ACTIVE_SESSION, null);
 
-                string session = _dal.LoadData(user, pluginId);
-                PluginOutput output = plugin.Execute(input, session, _callbacks);
-                _dal.SaveData(user, pluginId, output.Session);
+            IPlugin plugin = _pluginsManager.CreatePlugin(pluginId);
+            string session = _dal.LoadData(user, pluginId);
+            PluginOutput output = plugin.Execute(input, session, _callbacks);
 
-                return output.Message;
+            _dal.SaveData(user, pluginId, output.Session);
+            return output.Message;
         }
     }
 }
