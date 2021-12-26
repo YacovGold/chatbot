@@ -27,6 +27,7 @@ namespace Infrastructure
 
         public string Run(string input, string user)
         {
+            var currentPluginId = _dal.LoadData(user, pluginId, output.Session);
             if (_currentPlugin == null)
             {
                 if (input.ToLower() == "help")
