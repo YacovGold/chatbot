@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace DiceRoller
 {
-    record Session(int Dice1, int Dice2);
+    record PersistentDataStructure(int Dice1, int Dice2);
 
     public class DiceRollerPlugin : IPlugin
     {
@@ -23,7 +23,7 @@ namespace DiceRoller
 
             if (string.IsNullOrEmpty(input.PersistentData) == false)
             {
-                var res = JsonSerializer.Deserialize<Session>(input.PersistentData);
+                var res = JsonSerializer.Deserialize<PersistentDataStructure>(input.PersistentData);
                 last1 = res.Dice1;
                 last2 = res.Dice2;
             }
@@ -37,7 +37,7 @@ namespace DiceRoller
                 dice2 = rand.Next(1, 7);
             } while ((dice1 == last1 && dice2 == last2) || (dice1 == last2 && dice2 == last1));
 
-            var ses = new Session(dice1, dice2);
+            var ses = new PersistentDataStructure(dice1, dice2);
             var result = new PluginOutput($"You: {dice1} {dice2}", JsonSerializer.Serialize(ses));
             return result;
         }

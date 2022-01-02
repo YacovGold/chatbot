@@ -9,17 +9,21 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public class Host
+    class CallbacksProxy : ICallbacks
     {
-        const string ACTIVE_SESSION = "active session plugin";
+        public Action StartSession { get; set; }
+        public Action EndSession { get; set; }
+    }
+
+    public class PluginExecutor
+    {
+        const string SESSION_PLUGIN_ID = "SESSION_PLUGIN_ID";
 
         private readonly IDal _dal;
         private readonly PluginsMenu _pluginsMenu;
         private readonly PluginsManager _pluginsManager;
 
-        private readonly Callbacks _callbacks = new();
-
-        public Host(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
+        public PluginExecutor(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
         {
             _dal = dal;
             _pluginsMenu = pluginsMenu;
@@ -28,7 +32,7 @@ namespace Infrastructure
 
         public string Run(string message, string user)
         {
-            var currentPluginId = _dal.LoadData(user, ACTIVE_SESSION);
+            var currentPluginId = _dal.LoadData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
                 if (message.ToLower() == "help")
@@ -57,12 +61,15 @@ namespace Infrastructure
 
         private string Execute(string pluginId, string input, string user)
         {
-            _callbacks.StartSession = () => _dal.SaveData(user, ACTIVE_SESSION, pluginId);
-            _callbacks.EndSession = () => _dal.SaveData(user, ACTIVE_SESSION, null);
+            var callbacks = new CallbacksProxy
+            {
+                StartSession = () => _dal.SaveData(user, SESSION_PLUGIN_ID, pluginId),
+                EndSession = () => _dal.SaveData(user, SESSION_PLUGIN_ID, null)
+            };
 
             var plugin = _pluginsManager.CreatePlugin(pluginId);
             var persistentData = _dal.LoadData(user, pluginId);
-            var output = plugin.Execute(new PluginInput( input, persistentData, _callbacks));
+            var output = plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
             _dal.SaveData(user, pluginId, output.PersistentData);
             return output.Message;
