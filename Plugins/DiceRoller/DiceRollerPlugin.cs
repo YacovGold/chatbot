@@ -16,16 +16,14 @@ namespace DiceRoller
         public static string _Id => "dice-roller";
         public string Id => _Id;
 
-        public bool CanExecute(string input, string session) => true;
-
-        public PluginOutput Execute(string input, string session, ICallbacks callbacks)
+        public PluginOutput Execute(PluginInput input)
         {
             var last1 = 0;
             var last2 = 0;
 
-            if (string.IsNullOrEmpty(session) == false)
+            if (string.IsNullOrEmpty(input.PersistentData) == false)
             {
-                var res = JsonSerializer.Deserialize<Session>(session);
+                var res = JsonSerializer.Deserialize<Session>(input.PersistentData);
                 last1 = res.Dice1;
                 last2 = res.Dice2;
             }

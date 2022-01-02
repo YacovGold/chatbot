@@ -7,7 +7,6 @@ namespace BasePlugin.Interfaces
     public interface IPlugin
     {
         public string Id { get; }
-        public bool CanExecute(string input, string session);
-        public PluginOutput Execute(string input, string session, ICallbacks callbacks);
+        public PluginOutput Execute(PluginInput input);
     }
 }

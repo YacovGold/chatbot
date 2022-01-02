@@ -9,11 +9,9 @@ namespace Counter
         public static string _Id => "counter";
         public string Id => _Id;
 
-        public bool CanExecute(string input, string session) => true;
-
-        public PluginOutput Execute(string input, string session, ICallbacks callbacks)
+        public PluginOutput Execute(PluginInput input)
         {
-            var lastCount = session == null ? 0 : int.Parse(session);
+            var lastCount = input.PersistentData == null ? 0 : int.Parse(input.PersistentData);
             var result = (lastCount + 1).ToString();
             return new PluginOutput(result, result);
         }
