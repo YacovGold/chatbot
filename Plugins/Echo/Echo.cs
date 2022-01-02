@@ -11,23 +11,21 @@ namespace Echo
         public static string _Id = "echo";
         public string Id => _Id;
 
-        public bool CanExecute(string input, string session) => true;
-
-        public PluginOutput Execute(string input, string session, ICallbacks callbacks)
+        public PluginOutput Execute(PluginInput input)
         {
-            if (input == "")
+            if (input.Message == "")
             {
-                callbacks.StartSession();
-                return new PluginOutput("Echo started. Enter 'Exit' to stop.", null);
+                input.Callbacks.StartSession();
+                return new PluginOutput("Echo started. Enter 'Exit' to stop.");
             }
-            else if (input.ToLower() == "exit")
+            else if (input.Message.ToLower() == "exit")
             {
-                callbacks.EndSession();
-                return new PluginOutput("Echo stopped.", null);
+                input.Callbacks.EndSession();
+                return new PluginOutput("Echo stopped.");
             }
             else
             {
-                return new PluginOutput(input.ToUpper(), null);
+                return new PluginOutput(input.Message.ToUpper());
             }
         }
     }

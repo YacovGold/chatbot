@@ -26,17 +26,17 @@ namespace Infrastructure
             _pluginsManager = pluginsManager;
         }
 
-        public string Run(string input, string user)
+        public string Run(string message, string user)
         {
             var currentPluginId = _dal.LoadData(user, ACTIVE_SESSION);
             if (currentPluginId == null)
             {
-                if (input.ToLower() == "help")
+                if (message.ToLower() == "help")
                 {
                     return _pluginsMenu.PlaginsHelp();
                 }
 
-                if (!int.TryParse(input, out int pluginNumber))
+                if (!int.TryParse(message, out int pluginNumber))
                 {
                     return "This option is not recognized, please type help to see the options.";
                 }
@@ -46,12 +46,12 @@ namespace Infrastructure
                     return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
                 }
 
-                string pluginId = PluginsManager.plugins[pluginNumber - 1];
+                var pluginId = PluginsManager.plugins[pluginNumber - 1];
                 return Execute(pluginId, string.Empty, user);
             }
             else
             {
-                return Execute(currentPluginId, input, user);
+                return Execute(currentPluginId, message, user);
             }
         }
 
@@ -60,11 +60,11 @@ namespace Infrastructure
             _callbacks.StartSession = () => _dal.SaveData(user, ACTIVE_SESSION, pluginId);
             _callbacks.EndSession = () => _dal.SaveData(user, ACTIVE_SESSION, null);
 
-            IPlugin plugin = _pluginsManager.CreatePlugin(pluginId);
-            string session = _dal.LoadData(user, pluginId);
-            PluginOutput output = plugin.Execute(input, session, _callbacks);
+            var plugin = _pluginsManager.CreatePlugin(pluginId);
+            var persistentData = _dal.LoadData(user, pluginId);
+            var output = plugin.Execute(new PluginInput( input, persistentData, _callbacks));
 
-            _dal.SaveData(user, pluginId, output.Session);
+            _dal.SaveData(user, pluginId, output.PersistentData);
             return output.Message;
         }
     }

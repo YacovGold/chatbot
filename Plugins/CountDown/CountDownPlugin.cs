@@ -15,26 +15,24 @@ namespace CountDown
         public static string _Id = "count-down";
         public string Id => _Id;
 
-        public bool CanExecute(string input, string session) => true;
-
-        public PluginOutput Execute(string input, string session, ICallbacks callbacks)
+        public PluginOutput Execute(PluginInput input)
         {
-            if (input == "")
+            if (input.Message == "")
             {
                 _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "");
-                return new PluginOutput("Countdown started.", null);
+                return new PluginOutput("Countdown started.");
             }
             else
             {
                 try
                 {
-                    var interval = int.Parse(input);
+                    var interval = int.Parse(input.Message);
                     _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "");
-                    return new PluginOutput("Countdown started.", null);
+                    return new PluginOutput("Countdown started.");
                 }
                 catch (FormatException)
                 {
-                    return new PluginOutput("Countdown failed, string input nust represent vaild seconds.", null);
+                    return new PluginOutput("Countdown failed, string input nust represent vaild seconds.");
                 }
             }
         }
