@@ -3,6 +3,7 @@ using CountDown;
 using Counter;
 using DiceRoller;
 using Echo;
+using List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,11 @@ namespace Infrastructure
             {
                 return new EchoPlugin();
             }
-            else
+            else if (id == ListPlugin._Id)
+            {
+                return new ListPlugin();
+            }
+           else
             {
                 throw new NotImplementedException();
             }
@@ -42,7 +47,8 @@ namespace Infrastructure
             DiceRollerPlugin._Id,
             CountDownPlugin._Id,
             CounterPlugin._Id,
-            EchoPlugin._Id
+            EchoPlugin._Id,
+            ListPlugin._Id
         };
     }
 }
