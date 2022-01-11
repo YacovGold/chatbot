@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
-
-namespace List
+namespace ListPlugin
 {
     record PersistentDataStructure(List<string> List);
 
@@ -37,16 +36,16 @@ namespace List
             }
             else if (input.Message.ToLower().StartsWith("add"))
             {
-                string str = input.Message.Substring(3);
+                var str = input.Message.Substring("add".Length).Trim();
                 list.Add(str);
 
                 var data = new PersistentDataStructure(list);
 
                 return new PluginOutput($"New task: {str}", JsonSerializer.Serialize(data));
             }
-            else if (input.Message.ToLower() == "delete")
+            else if (input.Message.ToLower().StartsWith("delete"))
             {
-                string str = input.Message.Substring(6);
+                var str = input.Message.Substring("delete".Length).Trim();
                 list = list.Where(task => task != str).ToList();
 
                 var data = new PersistentDataStructure(list);
@@ -55,15 +54,13 @@ namespace List
             }
             else if (input.Message.ToLower() == "list")
             {
-                string listtasks = string.Join("\n", list);
-                return new PluginOutput($"All list tasks: {listtasks}", input.PersistentData);
+                string listtasks = string.Join("\r\n", list);
+                return new PluginOutput($"All list tasks:\r\n{listtasks}", input.PersistentData);
             }
             else
             {
                 return new PluginOutput("Error! Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
             }
         }
-
-
     }
 }

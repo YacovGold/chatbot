@@ -23,9 +23,6 @@ namespace ConsoleApp
                 var res = pluginExecutor.Run(msg, "");
                 Console.WriteLine(res);
             }
-
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
         }
     }
 }

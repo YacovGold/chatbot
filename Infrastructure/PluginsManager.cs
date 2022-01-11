@@ -3,7 +3,7 @@ using CountDown;
 using Counter;
 using DiceRoller;
 using Echo;
-using List;
+using ListPlugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +32,9 @@ namespace Infrastructure
             {
                 return new EchoPlugin();
             }
-            else if (id == ListPlugin._Id)
+            else if (id == ListPlugin.ListPlugin._Id)
             {
-                return new ListPlugin();
+                return new ListPlugin.ListPlugin();
             }
            else
             {
@@ -48,7 +48,7 @@ namespace Infrastructure
             CountDownPlugin._Id,
             CounterPlugin._Id,
             EchoPlugin._Id,
-            ListPlugin._Id
+            ListPlugin.ListPlugin._Id
         };
     }
 }
