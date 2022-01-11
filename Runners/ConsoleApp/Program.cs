@@ -16,18 +16,13 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             var pluginExecutor = new PluginExecutor(new MemoryDal(), new PluginsMenu(), new PluginsManager());
-            Console.WriteLine(pluginExecutor.Run("HelP", ""));
 
-            Console.WriteLine(pluginExecutor.Run("4", ""));
-            Console.WriteLine(pluginExecutor.Run("test", ""));
-            Console.WriteLine(pluginExecutor.Run("again", ""));
-            Console.WriteLine(pluginExecutor.Run("and again...", ""));
-            Console.WriteLine(pluginExecutor.Run("exit", ""));
-
-            Console.WriteLine(pluginExecutor.Run("3", ""));
-            Console.WriteLine(pluginExecutor.Run("3", ""));
-            Console.WriteLine(pluginExecutor.Run("7", ""));
-            Console.WriteLine(pluginExecutor.Run("ht", ""));
+            while (true)
+            {
+                var msg = Console.ReadLine();
+                var res = pluginExecutor.Run(msg, "");
+                Console.WriteLine(res);
+            }
 
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();

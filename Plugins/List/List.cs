@@ -3,12 +3,13 @@ using BasePlugin.Interfaces;
 using BasePlugin.Records;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 
 
 namespace List
 {
-    record PersistentDataStructure(Array<string> List);
+    record PersistentDataStructure(List<string> List);
 
     public class ListPlugin : IPlugin
     {
@@ -17,7 +18,7 @@ namespace List
 
         public PluginOutput Execute(PluginInput input)
         {
-            Array list = new Array();
+            List<string> list = new();
 
             if (string.IsNullOrEmpty(input.PersistentData) == false)
             {
@@ -27,17 +28,17 @@ namespace List
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                return new PluginOutput("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
+                return new PluginOutput("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.",input.PersistentData);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                return new PluginOutput("List stopped.");
+                return new PluginOutput("List stopped.",input.PersistentData);
             }
             else if (input.Message.ToLower().StartsWith("add"))
             {
                 string str=input.Message.Substring(3);
-                list.push (str);
+                list.Add (str);
 
                 var data = new PersistentDataStructure(list);
 
@@ -46,7 +47,7 @@ namespace List
             else if (input.Message.ToLower() == "delete")
             {
                 string str=input.Message.Substring(6);
-                list = list.Where(task => task != str).ToArray();
+                list = list.Where(task => task != str).ToList();
                 
                 var data = new PersistentDataStructure(list);
 
@@ -55,7 +56,7 @@ namespace List
             else if (input.Message.ToLower() == "list")
             {
                 string listtasks = string.Join("\n", list);
-                return new PluginOutput($"All list tasks: {listtasks}",input.PersistentData);
+                return new PluginOutput($"All list tasks: {listtasks}/r/n",input.PersistentData);
             }
             else
             {
