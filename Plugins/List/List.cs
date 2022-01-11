@@ -28,17 +28,17 @@ namespace List
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                return new PluginOutput("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.",input.PersistentData);
+                return new PluginOutput("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.", input.PersistentData);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                return new PluginOutput("List stopped.",input.PersistentData);
+                return new PluginOutput("List stopped.", input.PersistentData);
             }
             else if (input.Message.ToLower().StartsWith("add"))
             {
-                string str=input.Message.Substring(3);
-                list.Add (str);
+                string str = input.Message.Substring(3);
+                list.Add(str);
 
                 var data = new PersistentDataStructure(list);
 
@@ -46,9 +46,9 @@ namespace List
             }
             else if (input.Message.ToLower() == "delete")
             {
-                string str=input.Message.Substring(6);
+                string str = input.Message.Substring(6);
                 list = list.Where(task => task != str).ToList();
-                
+
                 var data = new PersistentDataStructure(list);
 
                 return new PluginOutput($"Delete task: {str}", JsonSerializer.Serialize(data));
@@ -56,7 +56,7 @@ namespace List
             else if (input.Message.ToLower() == "list")
             {
                 string listtasks = string.Join("\n", list);
-                return new PluginOutput($"All list tasks: {listtasks}/r/n",input.PersistentData);
+                return new PluginOutput($"All list tasks: {listtasks}", input.PersistentData);
             }
             else
             {
@@ -64,6 +64,6 @@ namespace List
             }
         }
 
-      
+
     }
 }
