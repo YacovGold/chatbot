@@ -6,6 +6,7 @@ using BasePlugin.Interfaces;
 using BasePlugin.Records;
 
 
+
 namespace CountWords
 {
     record Session(int NumberOfWords);
