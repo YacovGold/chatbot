@@ -11,10 +11,10 @@ namespace Infrastructure
     {
         public string PlaginsHelp()
         {
-            var lines = PluginsManager.plugins.Select((p, i) => $"{i + 1}. {p}");
+            var lines = PluginsManager.plugins.Select((p, i) => $"{i + 1}. {p}").ToList();
+            lines.Add("Sample: 4 the letters will be in upper case");
             var result = string.Join("\r\n", lines);
             return result;
         }
-
     }
 }

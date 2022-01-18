@@ -40,7 +40,9 @@ namespace Infrastructure
                     return _pluginsMenu.PlaginsHelp();
                 }
 
-                if (!int.TryParse(message, out int pluginNumber))
+                var pluginIdFromUser = message.Split(' ')[0];
+
+                if (!int.TryParse(pluginIdFromUser, out int pluginNumber))
                 {
                     return "This option is not recognized, please type help to see the options.";
                 }
@@ -50,8 +52,10 @@ namespace Infrastructure
                     return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
                 }
 
+                var msg = String.Join(' ', message.Split(' ').Skip(1).ToList());
+
                 var pluginId = PluginsManager.plugins[pluginNumber - 1];
-                return Execute(pluginId, string.Empty, user);
+                return Execute(pluginId, msg, user);
             }
             else
             {
