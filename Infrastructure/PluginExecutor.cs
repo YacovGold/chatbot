@@ -42,35 +42,10 @@ namespace Infrastructure
             var currentPluginId = _dal.LoadData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
-                if (AskForHelp(message, out string messageToUser))
+                if (message.ToLower() == "help")
                 {
-                    return messageToUser;
+                    return _pluginsMenu.PlaginsHelp();
                 }
-                if (IlegalRequestPressed(message, out messageToUser, out int pluginNumber))
-                {
-                    return messageToUser;
-                }
-
-                var requestedOperationType = ExractOperationType(pluginNumber);
-                messageToUser = Execute(requestedOperationType, string.Empty, user);
-                return messageToUser;
-            }
-            else
-            {
-                return Execute(currentPluginId, message, user);
-            }
-        }
-
-        private bool AskForHelp(string message, out string messageToUser)
-        {
-            messageToUser = string.Empty;
-            if (message.ToLower() == "help")
-            {
-                messageToUser = _pluginsMenu.PlaginsHelp();
-                return true;
-            }
-            return false;
-        }
 
         private string ExractOperationType(int pluginNumber)
         {
