@@ -29,34 +29,69 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
-
+        //public String ExecucteHhelp(string message)
+        //{
+        //     if (message.ToLower() == "help")
+        //        {
+        //            return _pluginsMenu.PlaginsHelp();
+        //        }
+        //    return string.Empty;
+        //}
         public string Run(string message, string user)
         {
             var currentPluginId = _dal.LoadData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
-                if (message.ToLower() == "help")
+                if (AskForHelp(message, out string messageToUser))
                 {
-                    return _pluginsMenu.PlaginsHelp();
+                    return messageToUser;
+                }
+                if (IlegalRequestPressed(message, out messageToUser, out int pluginNumber))
+                {
+                    return messageToUser;
                 }
 
-                if (!int.TryParse(message, out int pluginNumber))
-                {
-                    return "This option is not recognized, please type help to see the options.";
-                }
-
-                if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
-                {
-                    return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
-                }
-
-                var pluginId = PluginsManager.plugins[pluginNumber - 1];
-                return Execute(pluginId, string.Empty, user);
+                var requestedOperationType = ExractOperationType(pluginNumber);
+                messageToUser = Execute(requestedOperationType, string.Empty, user);
+                return messageToUser;
             }
             else
             {
                 return Execute(currentPluginId, message, user);
             }
+        }
+
+        private bool AskForHelp(string message, out string messageToUser)
+        {
+            messageToUser = string.Empty;
+            if (message.ToLower() == "help")
+            {
+                messageToUser = _pluginsMenu.PlaginsHelp();
+                return true;
+            }
+            return false;
+        }
+
+        private string ExractOperationType(int pluginNumber)
+        {
+            return PluginsManager.plugins[pluginNumber - 1];
+        }
+
+        private bool IlegalRequestPressed(string message, out string resultMessage, out int pluginNumber)
+        {
+            resultMessage = string.Empty;
+            if (!int.TryParse(message, out pluginNumber))
+            {
+                resultMessage = "This option is not recognized, please type help to see the options.";
+                return true;
+            }
+
+            if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            {
+                resultMessage = $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
+                return true;
+            }
+            return false;
         }
 
         private string Execute(string pluginId, string input, string user)
