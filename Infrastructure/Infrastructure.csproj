@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Plugins\CountDown\CountDown.csproj" />
     <ProjectReference Include="..\Plugins\Counter\Counter.csproj" />
+    <ProjectReference Include="..\Plugins\CountWords\CountTheWords.csproj" />
     <ProjectReference Include="..\Plugins\CountWord\CountWordPlugin.csproj" />
     <ProjectReference Include="..\Plugins\DiceRoller\DiceRoller.csproj" />
     <ProjectReference Include="..\Plugins\Echo\EchoPlugin.csproj" />
