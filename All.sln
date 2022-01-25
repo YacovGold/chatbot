@@ -29,11 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EchoPlugin", "Plugins\Echo\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListPlugin", "Plugins\List\ListPlugin.csproj", "{A3017B0D-BC3A-45B3-89B1-206159BE8FA6}"
 EndProject
-
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountTheWords", "Plugins\CountWords\CountTheWords.csproj", "{8F03F228-0CD9-44B4-BAD1-C7D4E1399F0B}"
-
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountWordPlugin", "Plugins\CountWord\CountWordPlugin.csproj", "{7DA2498A-C086-4046-AFF8-331B3D10C2B5}"
-
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -63,11 +63,8 @@ namespace Infrastructure
             CounterPlugin._Id,
             EchoPlugin._Id,
             ListPlugin.ListPlugin._Id,
-
-            CountTheWordsPlugin._Id
-
+            CountTheWordsPlugin._Id,
             CountWordPlugin._Id
-
         };
     }
 }
