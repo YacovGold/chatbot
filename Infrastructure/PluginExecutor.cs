@@ -35,28 +35,61 @@ namespace Infrastructure
             var currentPluginId = _dal.LoadData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
-                if (message.ToLower() == "help")
+                string msgForUser;
+                if (CheckIfUserAskForHelp(message, out msgForUser)
+                    || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
                 {
-                    return _pluginsMenu.PlaginsHelp();
+                    return msgForUser;
                 }
+                var extraData = ExtractExtraData(message);
+                var pluginType = ExtractPluginType(pluginNumber); 
 
-                if (!int.TryParse(message, out int pluginNumber))
-                {
-                    return "This option is not recognized, please type help to see the options.";
-                }
-
-                if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
-                {
-                    return $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
-                }
-
-                var pluginId = PluginsManager.plugins[pluginNumber - 1];
-                return Execute(pluginId, string.Empty, user);
+                return Execute(pluginType, extraData, user);
             }
             else
             {
                 return Execute(currentPluginId, message, user);
             }
+        }
+
+        private string ExtractPluginType(int pluginNumber)
+        {
+            return PluginsManager.plugins[pluginNumber - 1];
+        }
+
+        private string ExtractExtraData(string message)
+        {
+            return String.Join(' ', message.Split(' ').Skip(1).ToList());
+        }
+
+        private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
+        {
+            var pluginIdFromUser = message.Split(' ')[0];
+            res = string.Empty;
+            pluginNumber = 0;
+
+            if (!int.TryParse(pluginIdFromUser, out pluginNumber))
+            {
+                res = "This option is not recognized, please type help to see the options.";
+                return true;
+            }
+            if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            {
+                res = $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
+                return true;
+            }
+            return false;
+        }
+
+        private bool CheckIfUserAskForHelp(string message, out string res)
+        {
+            res = string.Empty;
+            if (message.ToLower() == "help")
+            {
+                res = _pluginsMenu.PluginsHelp();
+                return true;
+            }
+            return false;
         }
 
         private string Execute(string pluginId, string input, string user)

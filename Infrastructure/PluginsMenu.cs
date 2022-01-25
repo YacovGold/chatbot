@@ -9,12 +9,12 @@ namespace Infrastructure
 {
     public class PluginsMenu
     {
-        public string PlaginsHelp()
+        public string PluginsHelp()
         {
-            var lines = PluginsManager.plugins.Select((p, i) => $"{i + 1}. {p}");
+            var lines = PluginsManager.plugins.Select((p, i) => $"{i + 1}. {p}").ToList();
+            lines.Add("Sample: 4 the letters will be in upper case");
             var result = string.Join("\r\n", lines);
             return result;
         }
-
     }
 }
