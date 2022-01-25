@@ -1,7 +1,7 @@
 ﻿using BasePlugin.Interfaces;
 using CountDown;
 using Counter;
-using CountWords;
+using CountTheWords;
 using DiceRoller;
 using Echo;
 using ListPlugin;
@@ -37,9 +37,9 @@ namespace Infrastructure
             {
                 return new ListPlugin.ListPlugin();
             }
-            else if (id == CountWordsPlugin._Id)
+            else if (id == CountTheWordsPlugin._Id)
             {
-                return new CountWordsPlugin();
+                return new CountTheWordsPlugin();
             }
            else
             {
@@ -54,7 +54,7 @@ namespace Infrastructure
             CounterPlugin._Id,
             EchoPlugin._Id,
             ListPlugin.ListPlugin._Id,
-            CountWordsPlugin._Id
+            CountTheWordsPlugin._Id
         };
     }
 }

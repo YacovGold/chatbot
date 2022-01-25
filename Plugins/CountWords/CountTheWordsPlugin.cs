@@ -6,10 +6,10 @@ using BasePlugin.Records;
 
 
 
-namespace CountWords
+namespace CountTheWords
 {
    
-    public class CountWordsPlugin : IPlugin
+    public class CountTheWordsPlugin : IPlugin
     {
 
         public static string _Id = "count-words";
