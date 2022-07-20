@@ -32,7 +32,7 @@ namespace Infrastructure
 
         public string Run(string message, string user)
         {
-            var currentPluginId = _dal.LoadData(user, SESSION_PLUGIN_ID);
+            var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
                 string msgForUser;
@@ -96,15 +96,15 @@ namespace Infrastructure
         {
             var callbacks = new CallbacksProxy
             {
-                StartSession = () => _dal.SaveData(user, SESSION_PLUGIN_ID, pluginId),
-                EndSession = () => _dal.SaveData(user, SESSION_PLUGIN_ID, null)
+                StartSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
+                EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null)
             };
 
             var plugin = _pluginsManager.CreatePlugin(pluginId);
-            var persistentData = _dal.LoadData(user, pluginId);
+            var persistentData = _dal.LoadPluginData(user, pluginId);
             var output = plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
-            _dal.SaveData(user, pluginId, output.PersistentData);
+            _dal.SavePluginData(user, pluginId, output.PersistentData);
             return output.Message;
         }
     }

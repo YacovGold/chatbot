@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F55D7406-E0F7-45A5-8E74-345293E2E7B1}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountWordPlugin", "Plugins\CountWord\CountWordPlugin.csproj", "{7DA2498A-C086-4046-AFF8-331B3D10C2B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramWebRunner", "Runners\TelegramWebRunner\TelegramWebRunner.csproj", "{219E532D-81F2-498D-B189-A17F53151C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "DB\DB.csproj", "{2B506CC5-8DEF-4FEC-8C30-E023A3F546AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{219E532D-81F2-498D-B189-A17F53151C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{219E532D-81F2-498D-B189-A17F53151C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{219E532D-81F2-498D-B189-A17F53151C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B506CC5-8DEF-4FEC-8C30-E023A3F546AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B506CC5-8DEF-4FEC-8C30-E023A3F546AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B506CC5-8DEF-4FEC-8C30-E023A3F546AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B506CC5-8DEF-4FEC-8C30-E023A3F546AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
