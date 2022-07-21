@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlarmClock;
 
 namespace Infrastructure
 {
@@ -49,6 +50,10 @@ namespace Infrastructure
             {
                 return new CountWordPlugin();
             }
+            else if (id == AlarmClockPlugin._Id)
+            {
+                return new AlarmClockPlugin(new Scheduler(this));
+            }
             else
 
             {
@@ -64,7 +69,8 @@ namespace Infrastructure
             EchoPlugin._Id,
             ListPlugin.ListPlugin._Id,
             CountTheWordsPlugin._Id,
-            CountWordPlugin._Id
+            CountWordPlugin._Id,
+            AlarmClockPlugin._Id
         };
     }
 }
