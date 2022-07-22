@@ -6,14 +6,14 @@ namespace Dals
 {
     public class FileDal : IDal
     {
-        public void SaveData(string userData, string pluginId, string data)
+        public void SavePluginData(string userId, string pluginId, string data)
         {
-            File.WriteAllText(CreatePath(userData, pluginId), data);
+            File.WriteAllText(CreatePath(userId, pluginId), data);
         }
 
-        public string LoadData(string userData, string pluginId)
+        public string LoadPluginData(string userId, string pluginId)
         {
-            var path = CreatePath(userData, pluginId);
+            var path = CreatePath(userId, pluginId);
 
             if (File.Exists(path))
             {

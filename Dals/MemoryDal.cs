@@ -8,14 +8,14 @@ namespace Dals
     {
         Dictionary<string, string> _map = new();
 
-        public void SaveData(string userData, string pluginId, string data)
+        public void SavePluginData(string userId, string pluginId, string data)
         {
-            _map[CreateKey(userData, pluginId)] = data;
+            _map[CreateKey(userId, pluginId)] = data;
         }
 
-        public string LoadData(string userData, string pluginId)
+        public string LoadPluginData(string userId, string pluginId)
         {
-            var key = CreateKey(userData, pluginId);
+            var key = CreateKey(userId, pluginId);
 
             if (_map.ContainsKey(key))
             {
