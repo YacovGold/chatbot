@@ -18,7 +18,8 @@ namespace ConsoleApp
         {
             var pluginExecutor = new PluginExecutor(new DbDal(), new PluginsMenu(), new PluginsManager());
 
-            while(true){
+            while (true)
+            {
                 var msg = Console.ReadLine();
                 var res = pluginExecutor.Run(msg, " ");
                 Console.WriteLine(res);
