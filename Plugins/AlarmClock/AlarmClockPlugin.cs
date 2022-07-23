@@ -15,34 +15,30 @@ namespace AlarmClock
 
         public static string _Id = "Alarm-Clock";
         public string Id => _Id;
+
         public PluginOutput Execute(PluginInput input)
         {
             DateTime dateTime = DateTime.Now;
             var sh = input.Message.Split(':').First();
             var sm = input.Message.Split(':').Skip(1).First();
 
-            if (double.TryParse(sh, out double a) && double.TryParse(sm, out double b))
+            if (int.TryParse(sh, out int a) && int.TryParse(sm, out int b))
             {
-
-                int h = int.Parse(sh);
-                int m = int.Parse(sm);
-                var ts = new TimeSpan(h, m, 0);
-                var tsNew = new TimeSpan(dateTime.Hour, dateTime.Minute, 0);
+                var ts = new TimeSpan(a, b, dateTime.Second);
+                var tsNew = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
                 var tsNew2 = ts - tsNew;
+                var interval = tsNew2.TotalSeconds - dateTime.Second;
 
-
-                double interval = tsNew2.TotalMinutes;
                 if (input.Message == "")
                 {
                     _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "");
-                    return new PluginOutput("Countdown started.");
+                    return new PluginOutput("Alarm Clock set");
                 }
                 else
                 {
-                    _scheduler.Schedule(TimeSpan.FromMinutes(interval), Id, "");
-                    return new PluginOutput("Countdown started.");
+                    _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "");
+                    return new PluginOutput("Alarm Clock set");
                 }
-
             }
             else
             {
@@ -52,8 +48,7 @@ namespace AlarmClock
 
         public void OnScheduler(string data)
         {
-            Console.Beep(3000, duration: 2000);
-
+            Console.WriteLine("Alarm Clock fired");
         }
     }
 }
