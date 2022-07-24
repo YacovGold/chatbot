@@ -1,0 +1,12 @@
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\bin\Debug\net5.0\BasePlugin.deps.json
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\bin\Debug\net5.0\BasePlugin.dll
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\bin\Debug\net5.0\BasePlugin.pdb
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.csproj.AssemblyReference.cache
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.AssemblyInfoInputs.cache
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.AssemblyInfo.cs
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.csproj.CoreCompileInputs.cache
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.dll
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\refint\BasePlugin.dll
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\BasePlugin.pdb
+C:\Users\משתמש זה\Dropbox\PC\Desktop\chatbot-develop\Shared\BasePlugin\obj\Debug\net5.0\ref\BasePlugin.dll
