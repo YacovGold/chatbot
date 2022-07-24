@@ -1,0 +1,159 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Infrastructure/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0",
+          "CountDown": "1.0.0",
+          "CountTheWords": "1.0.0",
+          "CountWordPlugin": "1.0.0",
+          "Counter": "1.0.0",
+          "Dal": "1.0.0",
+          "DiceRoller": "1.0.0",
+          "EchoPlugin": "1.0.0",
+          "ListPlugin": "1.0.0",
+          "Timers": "1.0.0"
+        },
+        "runtime": {
+          "Infrastructure.dll": {}
+        }
+      },
+      "BasePlugin/1.0.0": {
+        "runtime": {
+          "BasePlugin.dll": {}
+        }
+      },
+      "CountDown/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "CountDown.dll": {}
+        }
+      },
+      "Counter/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "Counter.dll": {}
+        }
+      },
+      "CountTheWords/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "CountTheWords.dll": {}
+        }
+      },
+      "CountWordPlugin/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "CountWordPlugin.dll": {}
+        }
+      },
+      "Dal/1.0.0": {
+        "runtime": {
+          "Dal.dll": {}
+        }
+      },
+      "DiceRoller/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "DiceRoller.dll": {}
+        }
+      },
+      "EchoPlugin/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "EchoPlugin.dll": {}
+        }
+      },
+      "ListPlugin/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "ListPlugin.dll": {}
+        }
+      },
+      "Timers/1.0.0": {
+        "dependencies": {
+          "BasePlugin": "1.0.0"
+        },
+        "runtime": {
+          "Timers.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BasePlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CountDown/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Counter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CountTheWords/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CountWordPlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Dal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DiceRoller/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EchoPlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ListPlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Timers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

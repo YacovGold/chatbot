@@ -1,0 +1,845 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\chatbot-develop\\Runners\\ConsoleApp\\ConsoleApp.csproj": {}
+  },
+  "projects": {
+    "C:\\chatbot-develop\\Dals\\Dals.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Dals\\Dals.csproj",
+        "projectName": "Dals",
+        "projectPath": "C:\\chatbot-develop\\Dals\\Dals.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Dals\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "C:\\chatbot-develop\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\Counter\\Counter.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\Counter\\Counter.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\CountWords\\CountTheWords.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\CountWords\\CountTheWords.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\CountWord\\CountWordPlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\CountWord\\CountWordPlugin.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\Echo\\EchoPlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\Echo\\EchoPlugin.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\Hello\\Timers.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\Hello\\Timers.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\List\\ListPlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\List\\ListPlugin.csproj"
+              },
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              },
+              "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj",
+        "projectName": "CountDown",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\CountDown\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\Counter\\Counter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\Counter\\Counter.csproj",
+        "projectName": "Counter",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\Counter\\Counter.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\Counter\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\CountWords\\CountTheWords.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\CountWords\\CountTheWords.csproj",
+        "projectName": "CountTheWords",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\CountWords\\CountTheWords.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\CountWords\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\CountWord\\CountWordPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\CountWord\\CountWordPlugin.csproj",
+        "projectName": "CountWordPlugin",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\CountWord\\CountWordPlugin.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\CountWord\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj",
+        "projectName": "DiceRoller",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\DiceRoller\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\Echo\\EchoPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\Echo\\EchoPlugin.csproj",
+        "projectName": "EchoPlugin",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\Echo\\EchoPlugin.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\Echo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\Hello\\Timers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\Hello\\Timers.csproj",
+        "projectName": "Timers",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\Hello\\Timers.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\Hello\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Plugins\\List\\ListPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Plugins\\List\\ListPlugin.csproj",
+        "projectName": "ListPlugin",
+        "projectPath": "C:\\chatbot-develop\\Plugins\\List\\ListPlugin.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Plugins\\List\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Runners\\ConsoleApp\\ConsoleApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Runners\\ConsoleApp\\ConsoleApp.csproj",
+        "projectName": "ConsoleApp",
+        "projectPath": "C:\\chatbot-develop\\Runners\\ConsoleApp\\ConsoleApp.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Runners\\ConsoleApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\chatbot-develop\\Dals\\Dals.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Dals\\Dals.csproj"
+              },
+              "C:\\chatbot-develop\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Infrastructure\\Infrastructure.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\CountDown\\CountDown.csproj"
+              },
+              "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Plugins\\DiceRoller\\DiceRoller.csproj"
+              },
+              "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+                "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj",
+        "projectName": "BasePlugin",
+        "projectPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\BasePlugin.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Shared\\BasePlugin\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj",
+        "projectName": "Dal",
+        "projectPath": "C:\\chatbot-develop\\Shared\\Dal\\Dal\\Dal.csproj",
+        "packagesPath": "C:\\Users\\משתמש זה\\.nuget\\packages\\",
+        "outputPath": "C:\\chatbot-develop\\Shared\\Dal\\Dal\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\משתמש זה\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

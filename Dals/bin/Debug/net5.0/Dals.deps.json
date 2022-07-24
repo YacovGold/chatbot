@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Dals/1.0.0": {
+        "dependencies": {
+          "Dal": "1.0.0"
+        },
+        "runtime": {
+          "Dals.dll": {}
+        }
+      },
+      "Dal/1.0.0": {
+        "runtime": {
+          "Dal.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dals/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Dal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
