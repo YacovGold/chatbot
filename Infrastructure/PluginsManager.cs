@@ -4,13 +4,14 @@ using Counter;
 using CountTheWords;
 using DiceRoller;
 using Echo;
-using ListPlugin;
 using CountWord;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlarmClock;
+using List;
 
 namespace Infrastructure
 {
@@ -34,23 +35,23 @@ namespace Infrastructure
             {
                 return new EchoPlugin();
             }
-            else if (id == ListPlugin.ListPlugin._Id)
+            else if (id == ListPlugin._Id)
             {
-                return new ListPlugin.ListPlugin();
+                return new ListPlugin();
             }
-
             else if (id == CountTheWordsPlugin._Id)
             {
                 return new CountTheWordsPlugin();
             }
-
-
             else if (id == CountWordPlugin._Id)
             {
                 return new CountWordPlugin();
             }
+            else if (id == AlarmClockPlugin._Id)
+            {
+                return new AlarmClockPlugin(new Scheduler(this));
+            }
             else
-
             {
                 throw new NotImplementedException();
             }
@@ -62,9 +63,10 @@ namespace Infrastructure
             CountDownPlugin._Id,
             CounterPlugin._Id,
             EchoPlugin._Id,
-            ListPlugin.ListPlugin._Id,
+            ListPlugin._Id,
             CountTheWordsPlugin._Id,
-            CountWordPlugin._Id
+            CountWordPlugin._Id,
+            AlarmClockPlugin._Id
         };
     }
 }
