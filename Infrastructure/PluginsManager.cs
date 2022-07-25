@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using AlarmClock;
 using List;
 using Timers;
+using DataTimeNow;
 
 namespace Infrastructure
 {
@@ -56,6 +57,10 @@ namespace Infrastructure
             {
                 return new TimersPlugin(new Scheduler(this));
             }
+            else if (id == Date._Id)
+            {
+                return new Date();
+            }
             else
             {
                 throw new NotImplementedException();
@@ -72,7 +77,8 @@ namespace Infrastructure
             CountTheWordsPlugin._Id,
             CountWordPlugin._Id,
             TimersPlugin._Id,
-            AlarmClockPlugin._Id
+            AlarmClockPlugin._Id,
+            Date._Id
         };
     }
 }
