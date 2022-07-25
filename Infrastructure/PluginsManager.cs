@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AlarmClock;
 using List;
+using Timers;
 
 namespace Infrastructure
 {
@@ -51,6 +52,10 @@ namespace Infrastructure
             {
                 return new AlarmClockPlugin(new Scheduler(this));
             }
+            else if (id == TimersPlugin._Id)
+            {
+                return new TimersPlugin(new Scheduler(this));
+            }
             else
             {
                 throw new NotImplementedException();
@@ -66,6 +71,7 @@ namespace Infrastructure
             ListPlugin._Id,
             CountTheWordsPlugin._Id,
             CountWordPlugin._Id,
+            TimersPlugin._Id,
             AlarmClockPlugin._Id
         };
     }
