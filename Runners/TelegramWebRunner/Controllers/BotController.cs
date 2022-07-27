@@ -16,6 +16,12 @@ namespace TelegramWebRunner.Controllers
     public class BotController : ControllerBase
     {
         private static PluginExecutor pluginExecutor = new PluginExecutor(new MemoryDal(), new PluginsMenu(), new PluginsManager());
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Content("Hello");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Update update)
         {
@@ -27,7 +33,6 @@ namespace TelegramWebRunner.Controllers
                 var res = pluginExecutor.Run(update.Message.Text, update.Message.Chat.Id.ToString());
                 var action = client.SendTextMessageAsync(chatId: update.Message.Chat.Id, res);
                 Message sentMessage = await action;
-                await client.SendTextMessageAsync(update.Message.From.Id, "answer");
             }
 
             return Ok();
