@@ -12,7 +12,7 @@ using Telegram.Bot.Types;
 namespace TelegramWebRunner.Controllers
 {
     [ApiController]
-    [Route("api/bot")]
+    [Route("")]
     public class BotController : ControllerBase
     {
         private static PluginExecutor pluginExecutor = new PluginExecutor(new MemoryDal(), new PluginsMenu(), new PluginsManager());
@@ -27,7 +27,7 @@ namespace TelegramWebRunner.Controllers
         {
             var value = Environment.GetEnvironmentVariable("TelegramKey");
             var client = new TelegramBotClient(value);
-            
+
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
             {
                 var res = pluginExecutor.Run(update.Message.Text, update.Message.Chat.Id.ToString());

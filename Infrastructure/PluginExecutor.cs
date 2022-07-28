@@ -2,10 +2,7 @@
 using BasePlugin.Records;
 using Dal;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure
 {
@@ -111,7 +108,7 @@ namespace Infrastructure
             }
             catch (Exception)
             {
-                return "An error accured while executing the plugin.";
+                return "An error occured while executing the plugin.";
             }
         }
     }
