@@ -42,7 +42,7 @@ namespace Infrastructure
                     return msgForUser;
                 }
                 var extraData = ExtractExtraData(message);
-                var pluginType = ExtractPluginType(pluginNumber); 
+                var pluginType = ExtractPluginType(pluginNumber);
 
                 return Execute(pluginType, extraData, user);
             }
@@ -100,12 +100,19 @@ namespace Infrastructure
                 EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null)
             };
 
-            var plugin = _pluginsManager.CreatePlugin(pluginId);
-            var persistentData = _dal.LoadPluginData(user, pluginId);
-            var output = plugin.Execute(new PluginInput(input, persistentData, callbacks));
+            try
+            {
+                var plugin = _pluginsManager.CreatePlugin(pluginId);
+                var persistentData = _dal.LoadPluginData(user, pluginId);
+                var output = plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
-            _dal.SavePluginData(user, pluginId, output.PersistentData);
-            return output.Message;
+                _dal.SavePluginData(user, pluginId, output.PersistentData);
+                return output.Message;
+            }
+            catch (Exception)
+            {
+                return "An error accured while executing the plugin.";
+            }
         }
     }
 }
