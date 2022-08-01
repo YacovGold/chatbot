@@ -14,6 +14,7 @@ using AlarmClock;
 using List;
 using Timers;
 using DataTimeNow;
+using NumerologyCalculator;
 
 namespace Infrastructure
 {
@@ -61,6 +62,10 @@ namespace Infrastructure
             {
                 return new Date();
             }
+            else if (id == NumerologyCalculatorPlugin._Id)
+            {
+                return new NumerologyCalculatorPlugin();
+            }
             else
             {
                 throw new NotImplementedException();
@@ -78,7 +83,8 @@ namespace Infrastructure
             CountWordPlugin._Id,
             TimersPlugin._Id,
             AlarmClockPlugin._Id,
-            Date._Id
+            Date._Id,
+            NumerologyCalculatorPlugin._Id
         };
     }
 }
