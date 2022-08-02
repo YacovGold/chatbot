@@ -38,7 +38,7 @@ namespace DiceRoller
             } while ((dice1 == last1 && dice2 == last2) || (dice1 == last2 && dice2 == last1));
 
             var ses = new PersistentDataStructure(dice1, dice2);
-            input.Callbacks.SaveData(JsonSerializer.Serialize(ses));
+            input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(ses));
             input.Callbacks.SendMessage($"You: {dice1} {dice2}");
         }
     }

@@ -21,7 +21,6 @@ namespace CountDown
             {
                 _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
                 input.Callbacks.SendMessage("Countdown started.");
-                return;
             }
             else
             {
@@ -30,12 +29,10 @@ namespace CountDown
                     var interval = int.Parse(input.Message);
                     _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "", input.Callbacks);
                     input.Callbacks.SendMessage("Countdown started.");
-                    return;
                 }
                 catch (FormatException)
                 {
                     input.Callbacks.SendMessage("Countdown failed, string input nust represent vaild seconds.");
-                    return;
                 }
             }
         }

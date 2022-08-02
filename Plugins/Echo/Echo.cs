@@ -17,18 +17,15 @@ namespace Echo
             {
                 input.Callbacks.StartSession();
                 input.Callbacks.SendMessage("Echo started. Enter 'Exit' to stop.");
-                return;
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
                 input.Callbacks.SendMessage("Echo stopped.");
-                return;
             }
             else
             {
                 input.Callbacks.SendMessage(input.Message.ToUpper());
-                return;
             }
         }
     }

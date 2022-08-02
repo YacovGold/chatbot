@@ -11,7 +11,7 @@ namespace Infrastructure
         public Action StartSession { get; set; }
         public Action EndSession { get; set; }
         public Action<string> SendMessage { get; set; }
-        public Action<string> SaveData { get; set; }
+        public Action<string> SavePluginUserData { get; set; }
 
     }
 
@@ -102,7 +102,7 @@ namespace Infrastructure
                 StartSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
                 EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null),
                 SendMessage = message => _messageSender.SendMessage(user, message),
-                SaveData = data => _dal.SavePluginData(user, pluginId, data),
+                SavePluginUserData = data => _dal.SavePluginData(user, pluginId, data),
             };
 
             try

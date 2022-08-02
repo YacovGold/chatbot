@@ -33,19 +33,16 @@ namespace AlarmClock
                 {
                     _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
                     input.Callbacks.SendMessage("Alarm Clock set");
-                    return;
                 }
                 else
                 {
                     _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "", input.Callbacks);
                     input.Callbacks.SendMessage("Alarm Clock set");
-                    return;
                 }
             }
             else
             {
                 input.Callbacks.SendMessage("Please write the time in format - aa: mm");
-                return;
             }
         }
 

@@ -62,7 +62,7 @@ namespace Telegram.Bot.Examples.Polling
 
         public void SendMessage(string userId, string data)
         {
-            long chatId = long.Parse(userId);
+            var chatId = long.Parse(userId);
             SendMessage(chatId, data);
         }
     }

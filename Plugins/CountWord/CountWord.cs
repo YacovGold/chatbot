@@ -36,7 +36,6 @@ namespace CountWord
                     index++;
             }
             input.Callbacks.SendMessage($"The number of wrods in the text is: {wordCount} \r\nEnter new any text after the digit 6 to Count the number of words in the text.");
-            return;
         }
     }
 }
