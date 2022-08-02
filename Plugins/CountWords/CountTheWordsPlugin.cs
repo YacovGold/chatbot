@@ -8,7 +8,7 @@ using BasePlugin.Records;
 
 namespace CountTheWords
 {
-   
+
     public class CountTheWordsPlugin : IPlugin
     {
 
@@ -16,23 +16,24 @@ namespace CountTheWords
         public string Id => _Id;
 
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                return new PluginOutput("Count words started. Enter 'Exit' to stop.");
+                input.Callbacks.SendMessage("Count words started. Enter 'Exit' to stop.");
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                return new PluginOutput("Count words stopped.");
+                input.Callbacks.SendMessage("Count words stopped.");
             }
             else
             {
                 var numberOfWords = input.Message.Split(' ').Where(s => !string.IsNullOrEmpty(s)).Count();
 
-                return new PluginOutput("The number of words is " + numberOfWords, numberOfWords.ToString());
+                input.Callbacks.SavePluginUserData(numberOfWords.ToString());
+                input.Callbacks.SendMessage("The number of words is " + numberOfWords);
             }
         }
     }

@@ -9,11 +9,12 @@ namespace Counter
         public static string _Id => "counter";
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             var lastCount = input.PersistentData == null ? 0 : int.Parse(input.PersistentData);
             var result = (lastCount + 1).ToString();
-            return new PluginOutput(result, result);
+            input.Callbacks.SavePluginUserData(result);
+            input.Callbacks.SendMessage(result);
         }
     }
 }

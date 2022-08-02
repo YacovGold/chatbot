@@ -16,7 +16,7 @@ namespace AlarmClock
         public static string _Id = "Alarm-Clock";
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             DateTime dateTime = DateTime.Now;
             var sh = input.Message.Split(':').First();
@@ -31,24 +31,24 @@ namespace AlarmClock
 
                 if (input.Message == "")
                 {
-                    _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "");
-                    return new PluginOutput("Alarm Clock set");
+                    _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
+                    input.Callbacks.SendMessage("Alarm Clock set");
                 }
                 else
                 {
-                    _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "");
-                    return new PluginOutput("Alarm Clock set");
+                    _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "", input.Callbacks);
+                    input.Callbacks.SendMessage("Alarm Clock set");
                 }
             }
             else
             {
-                return new PluginOutput("Please write the time in format - aa: mm");
+                input.Callbacks.SendMessage("Please write the time in format - aa: mm");
             }
         }
 
-        public void OnScheduler(string data)
+        public void OnScheduler(ICallbacks callbacks, string data)
         {
-            Console.WriteLine("Alarm Clock fired");
+            callbacks.SendMessage("Alarm Clock fired");
         }
     }
 }
