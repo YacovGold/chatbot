@@ -11,7 +11,7 @@ namespace CountWord
         public static string _Id = "countword";
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             var wordCount = new int();
             var index = new int();
@@ -22,7 +22,8 @@ namespace CountWord
 
             if (string.IsNullOrWhiteSpace(str))
             {
-                return new PluginOutput("CountWord. Enter any text after the digit 6 to Count the number of words in the text");
+                input.Callbacks.SendMessage("CountWord. Enter any text after the digit 6 to Count the number of words in the text");
+                return;
             }
             while (index < str.Length && char.IsWhiteSpace(str[index]))
                 index++;
@@ -34,7 +35,8 @@ namespace CountWord
                 while (index < str.Length && char.IsWhiteSpace(str[index]))
                     index++;
             }
-            return new PluginOutput($"The number of wrods in the text is: {wordCount} \r\nEnter new any text after the digit 6 to Count the number of words in the text.");
+            input.Callbacks.SendMessage($"The number of wrods in the text is: {wordCount} \r\nEnter new any text after the digit 6 to Count the number of words in the text.");
+            return;
         }
     }
 }

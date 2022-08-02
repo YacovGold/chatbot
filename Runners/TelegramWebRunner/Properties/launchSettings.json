@@ -12,10 +12,10 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-       "launchUrl": "",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "TelegramKey": "5420875430:AAFLbJ7yPvQRsAc0IxqH2IOasR8LA7rKwBI"
+        "TelegramKey": ""
       }
     },
     "TelegramWebRunner": {

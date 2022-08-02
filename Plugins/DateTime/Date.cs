@@ -10,10 +10,9 @@ namespace DataTimeNow
 
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
-            var res = new PluginOutput("The Date is: " + DateTime.Now.ToString());
-            return res;
+            input.Callbacks.SendMessage("The Date is: " + DateTime.Now.ToString());
         }
     }
 }

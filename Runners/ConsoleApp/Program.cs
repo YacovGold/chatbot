@@ -12,18 +12,28 @@ using System.Linq;
 
 namespace ConsoleApp
 {
-    class Program
+    class Program : IMessageSender
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var pluginExecutor = new PluginExecutor(new DbDal(), new PluginsMenu(), new PluginsManager());
+            Program program = new Program();
+            program.Main(program);
+        }
+
+        void Main(IMessageSender messageSender)
+        {
+            var pluginExecutor = new PluginExecutor(messageSender, new DbDal(), new PluginsMenu(), new PluginsManager());
 
             while (true)
             {
                 var msg = Console.ReadLine();
-                var res = pluginExecutor.Run(msg, " ");
-                Console.WriteLine(res);
+                pluginExecutor.Run(msg, " ");
             }
+        }
+
+        public void SendMessage(string userId, string data)
+        {
+            Console.WriteLine($"Output for {userId}:\n{data}");
         }
     }
 }

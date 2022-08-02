@@ -15,7 +15,7 @@ namespace List
         public static string _Id = "list";
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             List<string> list = new();
 
@@ -27,12 +27,16 @@ namespace List
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                return new PluginOutput("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.", input.PersistentData);
+                input.Callbacks.SaveData(input.PersistentData);
+                input.Callbacks.SendMessage("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
+                return;
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                return new PluginOutput("List stopped.", input.PersistentData);
+                input.Callbacks.SaveData(input.PersistentData);
+                input.Callbacks.SendMessage("List stopped.");
+                return;
             }
             else if (input.Message.ToLower().StartsWith("add"))
             {
@@ -41,7 +45,9 @@ namespace List
 
                 var data = new PersistentDataStructure(list);
 
-                return new PluginOutput($"New task: {str}", JsonSerializer.Serialize(data));
+                input.Callbacks.SaveData(JsonSerializer.Serialize(data));
+                input.Callbacks.SendMessage($"New task: {str}");
+                return;
             }
             else if (input.Message.ToLower().StartsWith("delete"))
             {
@@ -50,16 +56,22 @@ namespace List
 
                 var data = new PersistentDataStructure(list);
 
-                return new PluginOutput($"Delete task: {str}", JsonSerializer.Serialize(data));
+                input.Callbacks.SaveData(JsonSerializer.Serialize(data));
+                input.Callbacks.SendMessage($"Delete task: {str}");
+                return;
             }
             else if (input.Message.ToLower() == "list")
             {
                 string listtasks = string.Join("\r\n", list);
-                return new PluginOutput($"All list tasks:\r\n{listtasks}", input.PersistentData);
+                input.Callbacks.SaveData(input.PersistentData);
+                input.Callbacks.SendMessage($"All list tasks:\r\n{listtasks}");
+                return;
             }
             else
             {
-                return new PluginOutput("Error! Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.", input.PersistentData);
+                input.Callbacks.SaveData(input.PersistentData);
+                input.Callbacks.SendMessage("Error! Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
+                return;
             }
         }
     }

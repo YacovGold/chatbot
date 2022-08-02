@@ -12,28 +12,15 @@ namespace Telegram.Bot.Examples.Polling
     {
         public static async Task Main()
         {
-
             var value = Environment.GetEnvironmentVariable("TelegramKey");
             var Bot = new TelegramBotClient(value);
             User me = await Bot.GetMeAsync();
             Console.Title = me.Username ?? "My awesome Bot";
-            using var cts = new CancellationTokenSource();
+            var handlers = new Handlers(Bot);
             ReceiverOptions receiverOptions = new() { AllowedUpdates = { } };
-            Bot.StartReceiving(Handlers.HandleUpdateAsync, Handlers.HandleErrorAsync);
+            Bot.StartReceiving(handlers.HandleUpdateAsync, handlers.HandleErrorAsync);
             Console.WriteLine($"Start listening for @{me.Username}");
             Console.ReadLine();
-            cts.Cancel();
-        }
-
-
-        private static async Task BotOnMessageReceived(ITelegramBotClient botClient, Message message)
-        {
-
-            Console.WriteLine($"Receive message type: {message.Type}");
-            if (message.Type != MessageType.Text)
-                return;
-            var action = botClient.SendTextMessageAsync(chatId: message.Chat.Id, "you asked me for:" + message.Text);
-            Message sentMessage = await action;
         }
     }
 }

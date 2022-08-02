@@ -1,5 +1,4 @@
 ﻿using BasePlugin.Records;
-using System.Collections.Generic;
 
 namespace BasePlugin.Interfaces
 {
@@ -7,6 +6,6 @@ namespace BasePlugin.Interfaces
     public interface IPlugin
     {
         public string Id { get; }
-        public PluginOutput Execute(PluginInput input);
+        public void Execute(PluginInput input);
     }
 }

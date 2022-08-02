@@ -10,6 +10,9 @@ namespace Infrastructure
     {
         public Action StartSession { get; set; }
         public Action EndSession { get; set; }
+        public Action<string> SendMessage { get; set; }
+        public Action<string> SaveData { get; set; }
+
     }
 
     public class PluginExecutor
@@ -17,17 +20,19 @@ namespace Infrastructure
         const string SESSION_PLUGIN_ID = "SESSION_PLUGIN_ID";
 
         private readonly IDal _dal;
+        private readonly IMessageSender _messageSender;
         private readonly PluginsMenu _pluginsMenu;
         private readonly PluginsManager _pluginsManager;
 
-        public PluginExecutor(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
+        public PluginExecutor(IMessageSender messageSender, IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
         {
             _dal = dal;
+            _messageSender = messageSender;
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
 
-        public string Run(string message, string user)
+        public void Run(string message, string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
@@ -36,16 +41,17 @@ namespace Infrastructure
                 if (CheckIfUserAskForHelp(message, out msgForUser)
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
                 {
-                    return msgForUser;
+                    _messageSender.SendMessage(user, msgForUser);
+                    return;
                 }
                 var extraData = ExtractExtraData(message);
                 var pluginType = ExtractPluginType(pluginNumber);
 
-                return Execute(pluginType, extraData, user);
+                Execute(pluginType, extraData, user);
             }
             else
             {
-                return Execute(currentPluginId, message, user);
+                Execute(currentPluginId, message, user);
             }
         }
 
@@ -89,26 +95,26 @@ namespace Infrastructure
             return false;
         }
 
-        private string Execute(string pluginId, string input, string user)
+        private void Execute(string pluginId, string input, string user)
         {
             var callbacks = new CallbacksProxy
             {
                 StartSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
-                EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null)
+                EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null),
+                SendMessage = message => _messageSender.SendMessage(user, message),
+                SaveData = data => _dal.SavePluginData(user, pluginId, data),
             };
 
             try
             {
                 var plugin = _pluginsManager.CreatePlugin(pluginId);
                 var persistentData = _dal.LoadPluginData(user, pluginId);
-                var output = plugin.Execute(new PluginInput(input, persistentData, callbacks));
+                plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
-                _dal.SavePluginData(user, pluginId, output.PersistentData);
-                return output.Message;
             }
             catch (Exception)
             {
-                return "An error occured while executing the plugin.";
+                _messageSender.SendMessage(user, "An error occured while executing the plugin.");
             }
         }
     }

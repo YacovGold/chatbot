@@ -4,6 +4,6 @@ namespace BasePlugin.Interfaces
 {
     public interface IScheduler
     {
-        void Schedule(TimeSpan ts, string pluginId, string data);
+        void Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks);
     }
 }

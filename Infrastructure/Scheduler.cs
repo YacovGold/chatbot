@@ -14,16 +14,16 @@ namespace Infrastructure
 
         public Scheduler(PluginsManager pluginsManager) => _pluginsManager = pluginsManager;
 
-        public void Schedule(TimeSpan ts, string pluginId, string data)
+        public void Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
-            _ = _Schedule(ts, pluginId, data);
+            _ = _Schedule(ts, pluginId, data, callbacks);
         }
 
-        private async Task _Schedule(TimeSpan ts, string pluginId, string data)
+        private async Task _Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
             await Task.Delay(ts);
             var plugin = (IPluginWithScheduler)_pluginsManager.CreatePlugin(pluginId);
-            plugin.OnScheduler(data);
+            plugin.OnScheduler(callbacks, data);
         }
     }
 }

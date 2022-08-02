@@ -16,12 +16,13 @@ namespace Timers
         public static string _Id = "Timers";
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             if (input.Message == "")
             {
-                _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "");
-                return new PluginOutput("Countdown started.");
+                _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
+                input.Callbacks.SendMessage("Countdown started.");
+                return;
             }
             else
             {
@@ -37,20 +38,22 @@ namespace Timers
                     var sum = m - h;
                     var one = sum * 60 - dateTime.Second;
 
-                    _scheduler.Schedule(TimeSpan.FromSeconds(one), Id, "");
+                    _scheduler.Schedule(TimeSpan.FromSeconds(one), Id, "", input.Callbacks);
 
-                    return new PluginOutput("Countdown started.");
+                    input.Callbacks.SendMessage("Countdown started.");
+                    return;
                 }
                 catch (FormatException)
                 {
-                    return new PluginOutput("Countdown failed, string input nust represent vaild seconds.");
+                    input.Callbacks.SendMessage("Countdown failed, string input nust represent vaild seconds.");
+                    return;
                 }
             }
         }
 
-        public void OnScheduler(string data)
+        public void OnScheduler(ICallbacks callbacks, string data)
         {
-            Console.WriteLine("Fired.");
+            callbacks.SendMessage("Fired.");
         }
     }
 }

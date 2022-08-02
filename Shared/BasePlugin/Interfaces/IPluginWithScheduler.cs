@@ -2,6 +2,6 @@
 {
     public interface IPluginWithScheduler : IPlugin
     {
-        void OnScheduler(string data);
+        void OnScheduler(ICallbacks callbacks, string data);
     }
 }
