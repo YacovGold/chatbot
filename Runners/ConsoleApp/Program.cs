@@ -33,7 +33,7 @@ namespace ConsoleApp
 
         public void SendMessage(string userId, string data)
         {
-            Console.WriteLine($"{userId}:\n{data}");
+            Console.WriteLine(data);
         }
     }
 }
