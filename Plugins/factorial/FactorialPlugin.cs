@@ -24,19 +24,15 @@ namespace Factorial
             else
             {
                 var factorial = input.Message;
-                long result = 1;
+                var result = 1.0;
                 var factorialNumber = int.Parse(factorial);
 
                 for (int i = 1; i <= factorialNumber; i++)
                 {
-                result *= i;
+                    result *= i;
                 }
-                input.Callbacks.SendMessage($"The factorial is: {result}"); 
+                input.Callbacks.SendMessage($"The factorial is: {result}");
             }
-
-            
-
-            
         }
     }
 }
