@@ -16,6 +16,7 @@ using Timers;
 using DataTimeNow;
 using NumerologyCalculator;
 using Factorial;
+using QuadraticEquation;
 
 namespace Infrastructure
 {
@@ -71,6 +72,10 @@ namespace Infrastructure
             {
                 return new FactorialPlugin();
             }
+            else if (id == QuadraticEquationPlugin._Id)
+            {
+                return new QuadraticEquationPlugin();
+            }
             else
             {
                 throw new NotImplementedException();
@@ -90,7 +95,8 @@ namespace Infrastructure
             AlarmClockPlugin._Id,
             Date._Id,
             NumerologyCalculatorPlugin._Id,
-            FactorialPlugin._Id
+            FactorialPlugin._Id,
+            QuadraticEquationPlugin._Id
         };
     }
 }

@@ -18,7 +18,7 @@ namespace NumerologyCalculator
             }
             else if (input.Message.ToLower() == "exit")
             {
-                input.Callbacks.StartSession();
+                input.Callbacks.EndSession();
                 input.Callbacks.SendMessage("calculat numerology stopeed..");
             }
             else
@@ -34,6 +34,7 @@ namespace NumerologyCalculator
                     }
                     sum += letterUser[i] - 96;
                 }
+                input.Callbacks.EndSession();
                 input.Callbacks.SendMessage($"The value of  {letterUser} is: {sum}");
             }
         }
