@@ -13,7 +13,7 @@ namespace QuadraticEquation
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Calculate a quadratic equation, Please enter entries of, type ' ' btween an integer: A, B, C:");
+                input.Callbacks.SendMessage("Calculate a quadratic equation, Please enter entries of, type ' ' btween an integer: A B C:");
             }
             else
             {
