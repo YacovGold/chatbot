@@ -16,8 +16,8 @@
     <ProjectReference Include="..\Plugins\factorial\factorial.csproj" />
     <ProjectReference Include="..\Plugins\List\ListPlugin.csproj" />
     <ProjectReference Include="..\Plugins\NumerologyCalculator\NumerologyCalculator.csproj" />
+    <ProjectReference Include="..\Plugins\QuadraticEquation\QuadraticEquation.csproj" />
     <ProjectReference Include="..\Plugins\Timers\Timers.csproj" />
-    <ProjectReference Include="..\QuadraticEquation\QuadraticEquation.csproj" />
     <ProjectReference Include="..\Shared\BasePlugin\BasePlugin.csproj" />
     <ProjectReference Include="..\Shared\Dal\Dal\Dal.csproj" />
   </ItemGroup>
