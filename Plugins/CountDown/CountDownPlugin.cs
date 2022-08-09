@@ -12,11 +12,12 @@ namespace CountDown
 
         public CountDownPlugin(IScheduler scheduler) => _scheduler = scheduler;
 
-        public static string _Id = "count-down";
+        public const string _Id = "count-down";
         public string Id => _Id;
 
         public void Execute(PluginInput input)
         {
+         
             if (input.Message == "")
             {
                 _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);

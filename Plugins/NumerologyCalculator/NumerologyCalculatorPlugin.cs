@@ -5,7 +5,7 @@ namespace NumerologyCalculator
 {
     public class NumerologyCalculatorPlugin : IPlugin
     {
-        public static string _Id => "numerology";
+        public const string _Id = "numerology";
 
         public string Id => _Id;
 

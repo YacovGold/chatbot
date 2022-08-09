@@ -13,7 +13,7 @@ namespace Timers
 
         public TimersPlugin(IScheduler scheduler) => _scheduler = scheduler;
 
-        public static string _Id = "Timers";
+        public const string _Id = "Timers";
         public string Id => _Id;
 
         public void Execute(PluginInput input)
