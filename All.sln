@@ -55,6 +55,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsPrimeNumber", "Plugins\Is
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateConversionToJewish", "Plugins\DateConversionToJewish\DateConversionToJewish.csproj", "{4FBFEEDC-D584-4ACC-B8B0-074138E6D695}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Plugins\Calculator\Calculator.csproj", "{F47EE0D2-9521-4249-AEA1-436CA22347C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{4FBFEEDC-D584-4ACC-B8B0-074138E6D695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FBFEEDC-D584-4ACC-B8B0-074138E6D695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FBFEEDC-D584-4ACC-B8B0-074138E6D695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F47EE0D2-9521-4249-AEA1-436CA22347C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47EE0D2-9521-4249-AEA1-436CA22347C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F47EE0D2-9521-4249-AEA1-436CA22347C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F47EE0D2-9521-4249-AEA1-436CA22347C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -178,6 +184,7 @@ Global
 		{43B07AF9-3B35-49B6-9E34-4ABAE79F8A1B} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
 		{EDD6521D-659F-4BB5-B38A-CC3E88C1A856} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
 		{4FBFEEDC-D584-4ACC-B8B0-074138E6D695} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
+		{F47EE0D2-9521-4249-AEA1-436CA22347C9} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {736E1636-C7C4-4B01-AC5C-397D68000922}

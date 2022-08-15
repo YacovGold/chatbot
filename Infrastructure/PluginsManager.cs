@@ -19,7 +19,7 @@ using IsPrimeNumber;
 using Factorial;
 using QuadraticEquation;
 using DateConversionToJewish;
-
+using Calculator;
 
 namespace Infrastructure
 {
@@ -82,7 +82,10 @@ namespace Infrastructure
             else if (id == QuadraticEquationPlugin._Id)
             {
                 return new QuadraticEquationPlugin();
-
+            }
+            else if (id == CalculatorPlugin._Id)
+            {
+                return new CalculatorPlugin();
             }
             else if (id == DateConversionToJewishPlugin._Id)
             {
@@ -110,7 +113,8 @@ namespace Infrastructure
             IsPrimeNumberPlugin._Id,
             FactorialPlugin._Id,
             QuadraticEquationPlugin._Id,
-            DateConversionToJewishPlugin._Id
+            DateConversionToJewishPlugin._Id,
+            CalculatorPlugin._Id,
         };
     }
 }
