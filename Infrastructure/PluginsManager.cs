@@ -70,11 +70,10 @@ namespace Infrastructure
             {
                 return new NumerologyCalculatorPlugin();
             }
-
-           else if (id == IsPrimeNumberPlugin._Id)
+            else if (id == IsPrimeNumberPlugin._Id)
             {
                 return new IsPrimeNumberPlugin();
-
+            }
             else if (id == FactorialPlugin._Id)
             {
                 return new FactorialPlugin();
@@ -103,7 +102,7 @@ namespace Infrastructure
             AlarmClockPlugin._Id,
             Date._Id,
             NumerologyCalculatorPlugin._Id,
-            IsPrimeNumberPlugin._Id
+            IsPrimeNumberPlugin._Id,
             FactorialPlugin._Id,
             QuadraticEquationPlugin._Id
 
