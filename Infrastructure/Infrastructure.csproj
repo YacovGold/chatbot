@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DateConversionToJewish\DateConversionToJewish.csproj" />
     <ProjectReference Include="..\Plugins\AlarmClock\AlarmClock.csproj" />
     <ProjectReference Include="..\Plugins\CountDown\CountDown.csproj" />
     <ProjectReference Include="..\Plugins\Counter\Counter.csproj" />

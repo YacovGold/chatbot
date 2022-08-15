@@ -17,6 +17,7 @@ using DataTimeNow;
 using NumerologyCalculator;
 using Factorial;
 using QuadraticEquation;
+using DateConversionToJewish;
 
 namespace Infrastructure
 {
@@ -76,6 +77,10 @@ namespace Infrastructure
             {
                 return new QuadraticEquationPlugin();
             }
+            else if (id == DateConversionToJewishPlugin._Id)
+            {
+                return new DateConversionToJewishPlugin();
+            }
             else
             {
                 throw new NotImplementedException();
@@ -96,7 +101,8 @@ namespace Infrastructure
             Date._Id,
             NumerologyCalculatorPlugin._Id,
             FactorialPlugin._Id,
-            QuadraticEquationPlugin._Id
+            QuadraticEquationPlugin._Id,
+            DateConversionToJewishPlugin._Id
         };
     }
 }
