@@ -34,6 +34,7 @@ namespace NumerologyCalculator
                     }
                     sum += letterUser[i] - 96;
                 }
+                input.Callbacks.EndSession();
                 input.Callbacks.SendMessage($"The value of  {letterUser} is: {sum}");
             }
         }
