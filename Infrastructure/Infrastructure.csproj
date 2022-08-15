@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Plugins\DateTime\DateTime.csproj" />
     <ProjectReference Include="..\Plugins\DiceRoller\DiceRoller.csproj" />
     <ProjectReference Include="..\Plugins\Echo\EchoPlugin.csproj" />
+    <ProjectReference Include="..\Plugins\IsPrimeNumber\IsPrimeNumber.csproj" />
     <ProjectReference Include="..\Plugins\factorial\factorial.csproj" />
     <ProjectReference Include="..\Plugins\List\ListPlugin.csproj" />
     <ProjectReference Include="..\Plugins\NumerologyCalculator\NumerologyCalculator.csproj" />
