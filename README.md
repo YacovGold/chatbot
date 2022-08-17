@@ -34,6 +34,41 @@ On Heroku you can easily generate a CI (Continuous Integration)/CD (Continuous D
 If you want better control of the app on Heroku, you should download the Heroku [CLI](https://devcenter.heroku.com/articles/heroku-cli).\
 With this tool you can see logs, errors, etc.
 
+#### Connecting to a web DB
+
+On Heroku you can create a DB connection for the app, using Heroku Postgres.
+To Create a Postgres database on Heroku and set the connection follow the next steps:\
+
+1. Go to your app on heroku and click 'Configure Add-ons' under the 'Overview' tab.
+2. Search for 'Heroku Postgres' in the search bar, choose the free plan and click on 'Submit Order Form'. (To make sure you created a database and attached it to the app, you can go to 'Config Vars' under settings and you should see there now a variable named 'DATABASE_URL').
+3. To connect the app to the DB, copy these code lines to where your DB configurations are:
+
+```
+var m = Regex.Match(Environment.GetEnvironmentVariable("DATABASE_URL")!, @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
+builder.UseNpgsql($"Server={m.Groups[3]};Port={m.Groups[4]};User Id={m.Groups[1]};Password={m.Groups[2]};Database={m.Groups[5]};sslmode=Prefer;Trust Server Certificate=true");
+
+```
+
+(If 'UseNpgsql' is not recognized, install the 'Npgsql.EntityFrameworkCore.PostgreSQL' package form 'Nuget Package Manager'.)
+In our case it will be the 'OnConfiguring' method in the DBContext class:
+
+```
+protected override void OnConfiguring(DbContextOptionsBuilder builder)
+{
+    if (Environment.GetEnvironmentVariable("DATABASE_URL") != null)
+    {
+        var m = Regex.Match(Environment.GetEnvironmentVariable("DATABASE_URL")!, @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
+        builder.UseNpgsql($"Server={m.Groups[3]};Port={m.Groups[4]};User Id={m.Groups[1]};Password={m.Groups[2]};Database={m.Groups[5]};sslmode=Prefer;Trust Server Certificate=true");
+    }
+    else
+    {
+        builder.UseInMemoryDatabase("chatDB");
+    }
+}
+```
+
+In these lines we are checking that there is a variable named 'DATABASE_URL' and its value is not 'null',otherwise we are using the computer's memory. 4. If you go now to Datastores on heroku and click on your database, you should see the number of connections you have. which at this point it's probably 1.
+
 ### Telegram setup and integration
 
 #### Set up a Telegram bot
