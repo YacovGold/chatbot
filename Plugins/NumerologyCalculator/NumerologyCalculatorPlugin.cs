@@ -9,17 +9,17 @@ namespace NumerologyCalculator
 
         public string Id => _Id;
 
-        public PluginOutput Execute(PluginInput input)
+        public void Execute(PluginInput input)
         {
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                return new PluginOutput("please type a letter to know the numerology..");
+                input.Callbacks.SendMessage("please type a letter to know the numerology..");
             }
             else if (input.Message.ToLower() == "exit")
             {
-                input.Callbacks.StartSession();
-                return new PluginOutput("calculat numerology stopeed..");
+                input.Callbacks.EndSession();
+                input.Callbacks.SendMessage("calculat numerology stopeed..");
             }
             else
             {
@@ -34,8 +34,8 @@ namespace NumerologyCalculator
                     }
                     sum += letterUser[i] - 96;
                 }
-
-                return new PluginOutput($"The value of  {letterUser} is: {sum}");
+                input.Callbacks.EndSession();
+                input.Callbacks.SendMessage($"The value of  {letterUser} is: {sum}");
             }
         }
     }

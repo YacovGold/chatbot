@@ -15,6 +15,11 @@ using List;
 using Timers;
 using DataTimeNow;
 using NumerologyCalculator;
+using IsPrimeNumber;
+using Factorial;
+using QuadraticEquation;
+using DateConversionToJewish;
+using Calculator;
 
 namespace Infrastructure
 {
@@ -66,6 +71,26 @@ namespace Infrastructure
             {
                 return new NumerologyCalculatorPlugin();
             }
+            else if (id == IsPrimeNumberPlugin._Id)
+            {
+                return new IsPrimeNumberPlugin();
+            }
+            else if (id == FactorialPlugin._Id)
+            {
+                return new FactorialPlugin();
+            }
+            else if (id == QuadraticEquationPlugin._Id)
+            {
+                return new QuadraticEquationPlugin();
+            }
+            else if (id == CalculatorPlugin._Id)
+            {
+                return new CalculatorPlugin();
+            }
+            else if (id == DateConversionToJewishPlugin._Id)
+            {
+                return new DateConversionToJewishPlugin();
+            }
             else
             {
                 throw new NotImplementedException();
@@ -84,7 +109,12 @@ namespace Infrastructure
             TimersPlugin._Id,
             AlarmClockPlugin._Id,
             Date._Id,
-            NumerologyCalculatorPlugin._Id
+            NumerologyCalculatorPlugin._Id,
+            IsPrimeNumberPlugin._Id,
+            FactorialPlugin._Id,
+            QuadraticEquationPlugin._Id,
+            DateConversionToJewishPlugin._Id,
+            CalculatorPlugin._Id,
         };
     }
 }
