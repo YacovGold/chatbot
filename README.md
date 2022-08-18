@@ -13,7 +13,7 @@ The project contains code from several juniors (and me :smile:).
 
 Instructions for deploying the app and creating a DB connection using Heroku Postgres.
 
-### [Telegram setup](Docs/Telegram_integration.md)
+## [Telegram setup](Docs/Telegram_integration.md)
 
 Instructions for:
 
