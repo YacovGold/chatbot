@@ -16,5 +16,5 @@ For example, if the token is 'abc123' and the app url is ht<span>tps://</span>ab
 
 If you want to debug the Telegram bot on your local device, you have to expose your local server port, on which the app is running, to the Internet. For that you can use Ngrok.
 Go to ngrok.com, sign up, download the version that suits your OS, and follow the installation instructions.\
-Run the command 'ngrok http --host-header=localhost <'PORT'>' and in the window that opened up you should see the URL that ngrok generates to your local port.\
+Run the command 'ngrok http --host-header=localhost {PORT}' and in the window that opened up you should see the URL that ngrok generates to your local port.\
 Now you have set webhook to the ngrok URL.
