@@ -16,7 +16,7 @@ namespace TelegramWebRunner.Controllers
 
         public BotController()
         {
-            pluginExecutor ??= new PluginExecutor(this, new MemoryDal(), new PluginsMenu(), new PluginsManager());
+            pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
             var value = Environment.GetEnvironmentVariable("TelegramKey");
             client = new TelegramBotClient(value);
         }

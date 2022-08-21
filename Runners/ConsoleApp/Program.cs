@@ -22,7 +22,7 @@ namespace ConsoleApp
 
         void Main(IMessageSender messageSender)
         {
-            var pluginExecutor = new PluginExecutor(messageSender, new DbDal(), new PluginsMenu(), new PluginsManager());
+            var pluginExecutor = new PluginExecutor(messageSender, new MemoryDal(), new PluginsMenu(), new PluginsManager());
 
             while (true)
             {
