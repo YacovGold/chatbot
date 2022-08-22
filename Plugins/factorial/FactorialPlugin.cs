@@ -5,7 +5,7 @@ namespace Factorial
 {
     public class FactorialPlugin : IPlugin
     {
-        public static string _Id => "factorial";
+        public const string _Id = "factorial";
 
         public string Id => _Id;
 
