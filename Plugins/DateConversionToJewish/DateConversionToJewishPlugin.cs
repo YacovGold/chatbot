@@ -11,7 +11,7 @@ namespace DateConversionToJewish
     public class DateConversionToJewishPlugin : IPlugin
 
     {
-        public static string _Id = "DateConversionToJewish";
+        public const string _Id = "DateConversionToJewish";
         public string Id => _Id;
 
         public void Execute(PluginInput input)

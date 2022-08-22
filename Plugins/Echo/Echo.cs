@@ -8,7 +8,7 @@ namespace Echo
 {
     public class EchoPlugin : IPlugin
     {
-        public static string _Id = "echo";
+        public const string _Id = "echo";
         public string Id => _Id;
 
         public void Execute(PluginInput input)

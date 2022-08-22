@@ -6,7 +6,7 @@ namespace Calculator
 {
     public class CalculatorPlugin : IPlugin
     {
-        public static string _Id => "calculator";
+        public const string _Id = "calculator";
         public string Id => _Id;
         public void Execute(PluginInput input)
         {

@@ -5,8 +5,9 @@ namespace QuadraticEquation
 {
     public class QuadraticEquationPlugin : IPlugin
     {
-        public static string _Id => "quadraticEquation";
+        public const string _Id = "quadraticEquation";
         public string Id => _Id;
+
 
         public void Execute(PluginInput input)
         {
