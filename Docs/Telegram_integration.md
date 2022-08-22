@@ -9,8 +9,8 @@ Keep the token you got, somewhere safe.
 
 To retrieve data from Telegram, you will have to set up Telegram Webhooks Integration. You'll do that by going to the browser and in the URL bar, type the following line:\
 "ht<span>tps://</span>api.telegram.org/bot{token}/setWebhook?url={OUR_WEB_APP_URL}"\
-For example, if the token is 'abc123' and the app url is ht<span>tps://</span>abc.com, then type in the URL bar:\
-"ht<span>tps://</span>api.telegram.org/botxyz123/setWebhook?url=ht<span>tps://</span>xyz.com"
+For example, if the token is 'abc123' and the app url is ht<span>tps://</span>abc.com/telegram, then type in the URL bar:\
+"ht<span>tps://</span>api.telegram.org/botxyz123/setWebhook?url=ht<span>tps://</span>xyz.com/telegram"
 
 ### Debug Telegram bot on local device using Ngrok
 
