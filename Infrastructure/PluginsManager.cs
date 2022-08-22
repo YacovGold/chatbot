@@ -21,19 +21,10 @@ using QuadraticEquation;
 using DateConversionToJewish;
 using Calculator;
 
-
-
-
-
-
-
 namespace Infrastructure
 {
     public class PluginsManager
     {
-
-
-
         public IPlugin CreatePlugin(string id) => id switch
         {
             CountDownPlugin._Id => new CountDownPlugin(new Scheduler(this)),
@@ -54,8 +45,6 @@ namespace Infrastructure
             DateConversionToJewishPlugin._Id => new DateConversionToJewishPlugin(),
             _ => throw new NotImplementedException(),
         };
-
-
 
         static public readonly IReadOnlyList<string> plugins = new List<string>
         {
