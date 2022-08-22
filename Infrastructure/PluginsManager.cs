@@ -20,6 +20,7 @@ using Factorial;
 using QuadraticEquation;
 using DateConversionToJewish;
 using Calculator;
+using Trivia;
 
 namespace Infrastructure
 {
@@ -43,6 +44,8 @@ namespace Infrastructure
             QuadraticEquationPlugin._Id => new QuadraticEquationPlugin(),
             CalculatorPlugin._Id => new CalculatorPlugin(),
             DateConversionToJewishPlugin._Id => new DateConversionToJewishPlugin(),
+            TriviaPlugin._Id => new TriviaPlugin(),
+
             _ => throw new NotImplementedException(),
         };
 
@@ -64,6 +67,7 @@ namespace Infrastructure
             QuadraticEquationPlugin._Id,
             DateConversionToJewishPlugin._Id,
             CalculatorPlugin._Id,
+            TriviaPlugin._Id,
         };
     }
 }
