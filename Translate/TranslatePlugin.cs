@@ -15,10 +15,8 @@ namespace List
         public const string _Id = "translate";
         public string Id => _Id;
 
-
         public void Execute(PluginInput input)
         {
-
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
@@ -43,6 +41,7 @@ namespace List
         }
         public string translate(string text, PluginInput input)
         {
+            var value = Environment.GetEnvironmentVariable("TranslateKey");
             string len = input.PersistentData;
             if (len == null)
             {
@@ -55,22 +54,21 @@ namespace List
                 RequestUri = new Uri("https://google-translate1.p.rapidapi.com/language/translate/v2"),
                 Headers =
             {
-                { "X-RapidAPI-Key", "de74d15ea7mshfaae56721a74a48p1edb42jsn4fa36d15cf91" },
+                { "X-RapidAPI-Key", value },
                 { "X-RapidAPI-Host", "google-translate1.p.rapidapi.com" },
             },
                 Content = new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                { "q", text },
-                { "target", len },
-                { "source", "" },
-            }),
+                {
+                    { "q", text },
+                    { "target", len },
+                    { "source", "" },
+                }),
             };
             using (var response = client.Send(request))
             {
                 response.EnsureSuccessStatusCode();
                 var body = response.Content.ReadAsStringAsync();
                 return body.Result.Split(':')[3].Split(',')[0];
-
             }
         }
     }
