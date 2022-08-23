@@ -13,7 +13,7 @@ namespace AlarmClock
         IScheduler _scheduler;
         public AlarmClockPlugin(IScheduler scheduler) => _scheduler = scheduler;
 
-        public static string _Id = "Alarm-Clock";
+        public const string _Id = "Alarm-Clock";
         public string Id => _Id;
 
         public void Execute(PluginInput input)

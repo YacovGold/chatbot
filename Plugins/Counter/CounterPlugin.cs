@@ -6,7 +6,7 @@ namespace Counter
 {
     public class CounterPlugin : IPlugin
     {
-        public static string _Id => "counter";
+        public const string _Id = "counter";
         public string Id => _Id;
 
         public void Execute(PluginInput input)
