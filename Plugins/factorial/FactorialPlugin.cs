@@ -18,7 +18,7 @@ namespace Factorial
             }
             else if (input.Message.ToLower() == "exit")
             {
-                input.Callbacks.StartSession();
+                input.Callbacks.EndSession();
                 input.Callbacks.SendMessage("calculat factorial stopeed..");
             }
             else
