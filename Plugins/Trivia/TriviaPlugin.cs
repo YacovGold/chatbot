@@ -23,6 +23,13 @@ namespace Trivia
         public string Id => _Id;
         public void Execute(PluginInput input)
         {
+            if (string.IsNullOrEmpty(input.PersistentData) == false)
+            {
+                var trivia = JsonSerializer.Deserialize<PersistentDataStructure>(input.PersistentData);
+                score = trivia.score;
+                numQest = trivia.numQest;
+                trueResult = trivia.trueResult;
+            }
             if (input.Message == "" && string.IsNullOrEmpty(input.PersistentData) == true)
             {
                 input.Callbacks.StartSession();
@@ -30,65 +37,55 @@ namespace Trivia
                 input.Callbacks.SendMessage("Welcome to multiplication table trivia quiz, in order to start press Start , in order to finish press EXIT.");
 
             }
-            if (input.Message == "" && string.IsNullOrEmpty(input.PersistentData) == false)
-            {
-
-            }
-                if (string.IsNullOrEmpty(input.PersistentData) == false)
-            {
-                var trivia = JsonSerializer.Deserialize<PersistentDataStructure>(input.PersistentData);
-                score = trivia.score;
-                numQest = trivia.numQest;
-                trueResult = trivia.trueResult;
-            }
-
-            if (input.Message.ToLower() == "exit")
-            {
-                input.Callbacks.EndSession();
-                double grade = score / numQest * 100;
-                int grade1 = (int)grade;
-                string mess = $"The trivia stopped, your grade is: {grade1}";
-                input.Callbacks.SavePluginUserData(null);
-                input.Callbacks.SendMessage(mess);
-            }
-            else if (input.Message.ToLower() == "start")
-            {
-                var data = getTrivia();
-
-                var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult);
-                input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
-                input.Callbacks.SendMessage(data);
-            }
-            else if (input.Message == "" && string.IsNullOrEmpty(input.PersistentData) == false)
-            {
-                input.Callbacks.SavePluginUserData(input.PersistentData);
-            }
-            else if (input.Message.Length > 1 || input.Message[0] < '1' || input.Message[0] > '4')
-            {
-                input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage("Your answer is invalid, You need to type a number between 1 and 4");
-            }
             else
             {
-                numQest++;
-                if (int.Parse(input.Message) == trueResult + 1)
+                if (input.Message.ToLower() == "exit")
                 {
-                    score++;
+                    input.Callbacks.EndSession();
+                    double grade = score / numQest * 100;
+                    int grade1 = (int)grade;
+                    string mess = $"The trivia stopped, your grade is: {grade1}";
+                    input.Callbacks.SendMessage(mess);
+                    input.Callbacks.SavePluginUserData(null);
+                }
+                else if (input.Message.ToLower() == "start")
+                {
                     var data = getTrivia();
+
                     var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult);
                     input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
-                    input.Callbacks.SendMessage($"Very Good!!!\n{data}");
+                    input.Callbacks.SendMessage(data);
+                }
+                else if (input.Message == "" && string.IsNullOrEmpty(input.PersistentData) == false)
+                {
+                    input.Callbacks.SavePluginUserData(input.PersistentData);
+                }
+                else if (input.Message.Length > 1 || input.Message[0] < '1' || input.Message[0] > '4')
+                {
+                    input.Callbacks.SavePluginUserData(input.PersistentData);
+                    input.Callbacks.SendMessage("Your answer is invalid, You need to type a number between 1 and 4");
                 }
                 else
                 {
-                    var mess = ($"Wrong,the correct answer is {trueResult + 1}");
-                    var data = getTrivia();
-                    var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult);
-                    input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
-                    input.Callbacks.SendMessage($"{mess}\n{data} ");
+                    numQest++;
+                    if (int.Parse(input.Message) == trueResult + 1)
+                    {
+                        score++;
+                        var data = getTrivia();
+                        var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult);
+                        input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
+                        input.Callbacks.SendMessage($"Very Good!!!\n{data}");
+                    }
+                    else
+                    {
+                        var mess = ($"Wrong,the correct answer is {trueResult + 1}");
+                        var data = getTrivia();
+                        var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult);
+                        input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
+                        input.Callbacks.SendMessage($"{mess}\n{data} ");
+                    }
                 }
             }
-
         }
 
         public string getTrivia()
