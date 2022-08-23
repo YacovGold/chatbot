@@ -56,7 +56,7 @@ namespace List
                 RequestUri = new Uri("https://google-translate1.p.rapidapi.com/language/translate/v2"),
                 Headers =
             {
-                { "X-RapidAPI-Key", value },
+                { "X-RapidAPI-Key", value.ToString() },
                 { "X-RapidAPI-Host", "google-translate1.p.rapidapi.com" },
             },
                 Content = new FormUrlEncodedContent(new Dictionary<string, string>
