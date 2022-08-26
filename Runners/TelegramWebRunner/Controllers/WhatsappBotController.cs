@@ -8,7 +8,7 @@ using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.TwiML;
 
-namespace TelegramWebRunner.Controllers
+namespace WebRunner.Controllers
 {
     [ApiController]
     [Route("whatsapp")]

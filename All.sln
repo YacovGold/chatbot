@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountTheWords", "Plugins\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountWordPlugin", "Plugins\CountWord\CountWordPlugin.csproj", "{7DA2498A-C086-4046-AFF8-331B3D10C2B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramWebRunner", "Runners\TelegramWebRunner\TelegramWebRunner.csproj", "{219E532D-81F2-498D-B189-A17F53151C07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebRunner", "Runners\TelegramWebRunner\WebRunner.csproj", "{219E532D-81F2-498D-B189-A17F53151C07}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlarmClock", "Plugins\AlarmClock\AlarmClock.csproj", "{613ACE83-E765-4F5D-A0C4-1BBA9CB80E34}"
 EndProject
@@ -57,7 +57,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateConversionToJewish", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Plugins\Calculator\Calculator.csproj", "{F47EE0D2-9521-4249-AEA1-436CA22347C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trivia", "Plugins\Trivia\Trivia.csproj", "{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trivia", "Plugins\Trivia\Trivia.csproj", "{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
