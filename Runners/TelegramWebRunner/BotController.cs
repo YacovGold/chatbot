@@ -32,9 +32,7 @@ namespace TelegramWebRunner.Controllers
            
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
             {
-                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
-                var dt = DateTime.Parse(DateTime.UtcNow.ToString(), Thread.CurrentThread.CurrentCulture);
-                Console.WriteLine(dt);
+                
                 pluginExecutor.Run(update.Message.Text, update.Message.Chat.Id.ToString());
             }
 
