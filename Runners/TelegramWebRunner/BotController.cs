@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using BasePlugin.Interfaces;
+using System.Globalization;
 
 namespace TelegramWebRunner.Controllers
 {
@@ -19,6 +20,10 @@ namespace TelegramWebRunner.Controllers
             pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
             var value = Environment.GetEnvironmentVariable("TelegramKey");
             client = new TelegramBotClient(value);
+
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+            var dt = DateTime.Parse(DateTime.Now.ToString(), Thread.CurrentThread.CurrentCulture);
+            Console.WriteLine(dt);
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello");
