@@ -21,9 +21,7 @@ namespace TelegramWebRunner.Controllers
             var value = Environment.GetEnvironmentVariable("TelegramKey");
             client = new TelegramBotClient(value);
 
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
-            var dt = DateTime.Parse(DateTime.Now.ToString(), Thread.CurrentThread.CurrentCulture);
-            Console.WriteLine(dt);
+            
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello");
@@ -33,6 +31,9 @@ namespace TelegramWebRunner.Controllers
         {
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
             {
+                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+                var dt = DateTime.Parse(DateTime.Now.ToString(), Thread.CurrentThread.CurrentCulture);
+                Console.WriteLine(dt);
                 pluginExecutor.Run(update.Message.Text, update.Message.Chat.Id.ToString());
             }
 
