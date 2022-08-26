@@ -2,8 +2,10 @@
 using BasePlugin.Records;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Infrastructure
@@ -21,6 +23,9 @@ namespace Infrastructure
 
         private async Task _Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+            var dt = DateTime.Parse(ts.ToString(), Thread.CurrentThread.CurrentCulture);
+            Console.WriteLine(dt);
             await Task.Delay(ts);
             var plugin = (IPluginWithScheduler)_pluginsManager.CreatePlugin(pluginId);
             plugin.OnScheduler(callbacks, data);
