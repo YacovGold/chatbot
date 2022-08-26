@@ -24,7 +24,7 @@ namespace Infrastructure
         private async Task _Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
-            var dt = DateTime.Parse(ts.ToString(), Thread.CurrentThread.CurrentCulture);
+            var dt = DateTime.Parse(DateTime.Now.ToString(), Thread.CurrentThread.CurrentCulture);
             Console.WriteLine(dt);
             await Task.Delay(ts);
             var plugin = (IPluginWithScheduler)_pluginsManager.CreatePlugin(pluginId);
