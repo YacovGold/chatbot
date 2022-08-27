@@ -6,16 +6,16 @@ using Telegram.Bot.Types;
 using BasePlugin.Interfaces;
 using System.Globalization;
 
-namespace TelegramWebRunner.Controllers
+namespace WebRunner.Controllers
 {
     [ApiController]
     [Route("telegram")]
-    public class BotController : ControllerBase, IMessageSender
+    public class TelegramBotController : ControllerBase, IMessageSender
     {
         private static PluginExecutor pluginExecutor;
         private readonly ITelegramBotClient client;
 
-        public BotController()
+        public TelegramBotController()
         {
             pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
             var value = Environment.GetEnvironmentVariable("TelegramKey");
