@@ -27,7 +27,7 @@ namespace Timers
             {
                 try
                 {
-                    var dateTime = DateTime.Now;
+                    var dateTime = DateTime.UtcNow;
                     var hour = int.Parse(input.Message.Split(':').First());
                     var Minute = int.Parse(input.Message.Split(':').Skip(1).First());
 

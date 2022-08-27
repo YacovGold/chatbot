@@ -12,7 +12,7 @@ namespace Telegram.Bot.Examples.Polling
     {
         public static async Task Main()
         {
-            var value = Environment.GetEnvironmentVariable("TelegramKey");
+            var value = "5417392315:AAFZ6UEmk66RDNY8BCvkxYcimCscMkShnnA";
             var Bot = new TelegramBotClient(value);
             User me = await Bot.GetMeAsync();
             Console.Title = me.Username ?? "My awesome Bot";
