@@ -19,6 +19,7 @@ namespace Infrastructure
         public void Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
             _ = _Schedule(ts, pluginId, data, callbacks);
+
         }
 
         private async Task _Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
