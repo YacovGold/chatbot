@@ -13,8 +13,8 @@ On Heroku you can easily generate a CI (Continuous Integration)/CD (Continuous D
 5. Go to settings and in 'Buildpacks' section click on 'Add buildpack'. Heroku doesn't have an officially supported buildpack for .NET applications. so, copy this URL 'ht<span>tps://</span>github.com/jincod/dotnetcore-buildpack', which is a buildpack provided on GitHub, and paste it to Heroku.
 6. Now configure the environment variables. Add a few variables. First the Telegram bot token. Second, because our app has many projects, we need to specify the startup project name and provide the path to the project files. So, click the 'Reveal Config Vars' at the 'Config Vars' section and add 3 key-value pairs:
 
-   - PROJECT_FILE - Runners/TelegramWebRunner/TelegramWebRunner.csproj.
-   - PROJECT_NAME - TelegramWebRunner.
+   - PROJECT_FILE - Runners/WebRunner/WebRunner.csproj.
+   - PROJECT_NAME - WebRunner.
    - TelegramKey - {YOUR_TOKEN}.
 
 7. Go back to deploy by clicking the 'deploy' tab, and scroll down to 'Manual deploy' section. Choose the branch you want to deploy your app from. (If you want you can hit the button 'Enable Automatic Deploys' to deploy your app every time you add a new commit to the branch).
