@@ -18,25 +18,28 @@ namespace AlarmClock
 
         public void Execute(PluginInput input)
         {
-            DateTime dateTime = DateTime.Now;
+            var userTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Israel Standard Time");
+            var dt = userTime;
+            if(string.IsNullOrWhiteSpace(input.Message))
+            {
+                input.Callbacks.SendMessage("Please write the time in format - aa: mm");
+                return;
+            }
             var sh = input.Message.Split(':').First();
             var sm = input.Message.Split(':').Skip(1).First();
 
-            if (int.TryParse(sh, out int a) && int.TryParse(sm, out int b))
-            {
-                var ts = new TimeSpan(a, b, dateTime.Second);
-                var tsNew = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
-                var tsNew2 = ts - tsNew;
-                var interval = tsNew2.TotalSeconds - dateTime.Second;
 
-                if (input.Message == "")
+            if(int.TryParse(sh, out int h) && int.TryParse(sm, out int m))
+            {
+                var d1 = new DateTime(dt.Year, dt.Month, dt.Day, h, m, 0);
+
+                if (d1<userTime)
                 {
-                    _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
-                    input.Callbacks.SendMessage("Alarm Clock set");
+                    d1= d1.AddDays(1);
                 }
                 else
                 {
-                    _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "", input.Callbacks);
+                    _scheduler.Schedule(d1, Id, "", input.Callbacks);
                     input.Callbacks.SendMessage("Alarm Clock set");
                 }
             }
