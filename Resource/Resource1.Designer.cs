@@ -59,5 +59,50 @@ namespace Resource {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alarm-Clock.
+        /// </summary>
+        internal static string AlarmClock_Id {
+            get {
+                return ResourceManager.GetString("AlarmClock_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alarm Clock set,Please write the time in format - aa: mm,Alarm Clock fired.
+        /// </summary>
+        internal static string AlarmClockSendMessage {
+            get {
+                return ResourceManager.GetString("AlarmClockSendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string s {
+            get {
+                return ResourceManager.GetString("s", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string String2 {
+            get {
+                return ResourceManager.GetString("String2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string String3 {
+            get {
+                return ResourceManager.GetString("String3", resourceCulture);
+            }
+        }
     }
 }
