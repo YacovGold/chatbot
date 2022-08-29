@@ -3,6 +3,7 @@ using BasePlugin.Records;
 using Dal;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Infrastructure
 {
@@ -31,8 +32,13 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
+        public string PluginId()
+        {
+            var currentPluginId = _dal.LoadPluginData("", SESSION_PLUGIN_ID);
 
-        public void Run(string message, string user)
+            return currentPluginId;
+        }
+        public string Run(string message, string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
@@ -42,16 +48,19 @@ namespace Infrastructure
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
                 {
                     _messageSender.SendMessage(user, msgForUser);
-                    return;
+                    return "";
                 }
                 var extraData = ExtractExtraData(message);
                 var pluginType = ExtractPluginType(pluginNumber);
-
                 Execute(pluginType, extraData, user);
+                currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+                var level =(currentPluginId!=null)? "\\" + currentPluginId:"";
+                return level;
             }
             else
             {
                 Execute(currentPluginId, message, user);
+                return "";
             }
         }
 
@@ -99,7 +108,7 @@ namespace Infrastructure
         {
             var callbacks = new CallbacksProxy
             {
-                StartSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
+                StartSession = () =>  _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
                 EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null),
                 SendMessage = message => _messageSender.SendMessage(user, message),
                 SavePluginUserData = data => _dal.SavePluginData(user, pluginId, data),
@@ -108,7 +117,9 @@ namespace Infrastructure
             try
             {
                 var plugin = _pluginsManager.CreatePlugin(pluginId);
+               
                 var persistentData = _dal.LoadPluginData(user, pluginId);
+                
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
             }

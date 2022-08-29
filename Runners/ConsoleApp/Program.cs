@@ -14,6 +14,7 @@ namespace ConsoleApp
 {
     class Program : IMessageSender
     {
+        private string level = "";
         static void Main()
         {
             Program program = new Program();
@@ -26,8 +27,10 @@ namespace ConsoleApp
 
             while (true)
             {
+                Console.Write("main{0}> ", level);
                 var msg = Console.ReadLine();
-                pluginExecutor.Run(msg, " ");
+                level=pluginExecutor.Run(msg, " ");
+               
             }
         }
 
