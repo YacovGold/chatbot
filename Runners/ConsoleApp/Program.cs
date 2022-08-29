@@ -22,8 +22,12 @@ namespace ConsoleApp
 
         void Main(IMessageSender messageSender)
         {
+
             var pluginExecutor = new PluginExecutor(messageSender, new DbDal(), new PluginsMenu(), new PluginsManager());
             Console.WriteLine("You can type help to get all the pulgins: ");
+
+            var pluginExecutor = new PluginExecutor(messageSender, new MemoryDal(), new PluginsMenu(), new PluginsManager());
+
 
             while (true)
             {

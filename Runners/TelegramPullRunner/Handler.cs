@@ -16,7 +16,7 @@ namespace Telegram.Bot.Examples.Polling
 
         public Handlers(ITelegramBotClient botClient)
         {
-            pluginExecutor ??= new PluginExecutor(this, new MemoryDal(), new PluginsMenu(), new PluginsManager());
+            pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
             _botClient = botClient;
         }
 

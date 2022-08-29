@@ -18,14 +18,17 @@ using NumerologyCalculator;
 using IsPrimeNumber;
 using Factorial;
 using QuadraticEquation;
-
+using DateConversionToJewish;
+using Calculator;
+using Trivia;
 
 namespace Infrastructure
 {
     public class PluginsManager
     {
-        public IPlugin CreatePlugin(string id)
+        public IPlugin CreatePlugin(string id) => id switch
         {
+
             if (id == CountDownPlugin._Id)
             {
                 return new CountDownPlugin(new Scheduler(this));
@@ -84,12 +87,27 @@ namespace Infrastructure
             {
                 return new QuadraticEquationPlugin();
 
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-        }
+            CountDownPlugin._Id => new CountDownPlugin(new Scheduler(this)),
+            DiceRollerPlugin._Id => new DiceRollerPlugin(),
+            CounterPlugin._Id => new CounterPlugin(),
+            EchoPlugin._Id => new EchoPlugin(),
+            ListPlugin._Id => new ListPlugin(),
+            CountTheWordsPlugin._Id => new CountTheWordsPlugin(),
+            CountWordPlugin._Id => new CountWordPlugin(),
+            AlarmClockPlugin._Id => new AlarmClockPlugin(new Scheduler(this)),
+            TimersPlugin._Id => new TimersPlugin(new Scheduler(this)),
+            Date._Id => new Date(),
+            NumerologyCalculatorPlugin._Id => new NumerologyCalculatorPlugin(),
+            IsPrimeNumberPlugin._Id => new IsPrimeNumberPlugin(),
+            FactorialPlugin._Id => new FactorialPlugin(),
+            QuadraticEquationPlugin._Id => new QuadraticEquationPlugin(),
+            CalculatorPlugin._Id => new CalculatorPlugin(),
+            DateConversionToJewishPlugin._Id => new DateConversionToJewishPlugin(),
+            TriviaPlugin._Id => new TriviaPlugin(),
+
+
+            _ => throw new NotImplementedException(),
+        };
 
         static public readonly IReadOnlyList<string> plugins = new List<string>
         {
@@ -106,8 +124,10 @@ namespace Infrastructure
             NumerologyCalculatorPlugin._Id,
             IsPrimeNumberPlugin._Id,
             FactorialPlugin._Id,
-            QuadraticEquationPlugin._Id
-
+            QuadraticEquationPlugin._Id,
+            DateConversionToJewishPlugin._Id,
+            CalculatorPlugin._Id,
+            TriviaPlugin._Id,
         };
     }
 }
