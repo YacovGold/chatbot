@@ -59,7 +59,14 @@ namespace Infrastructure
             }
             else
             {
-                Execute(currentPluginId, message, user);
+                if (message.ToLower() == "main" || message.ToLower() == "home")
+                {
+                    _dal.SavePluginData(user, SESSION_PLUGIN_ID, null);
+                }
+                else
+                {
+                    Execute(currentPluginId, message, user);
+                }
                 return "";
             }
         }
