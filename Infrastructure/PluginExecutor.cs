@@ -31,7 +31,6 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
-
         public void Run(string message, string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
@@ -65,7 +64,6 @@ namespace Infrastructure
         {
             return String.Join(' ', message.Split(' ').Skip(1).ToList());
         }
-
         private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
         {
             var pluginIdFromUser = message.Split(' ')[0];
@@ -95,7 +93,6 @@ namespace Infrastructure
             }
             return false;
         }
-
         private void Execute(string pluginId, string input, string user)
         {
             var callbacks = new CallbacksProxy
@@ -113,13 +110,11 @@ namespace Infrastructure
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _messageSender.SendMessage(user, "An error occured while executing the plugin, please type help again");
                 var plugin= new PluginInput(input, null, callbacks);
                 plugin.Callbacks.EndSession();
-
-
             }
         }
     }

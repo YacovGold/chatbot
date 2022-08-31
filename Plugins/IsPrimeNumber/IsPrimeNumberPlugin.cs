@@ -24,8 +24,7 @@ namespace IsPrimeNumber
                 input.Callbacks.SendMessage("we are sorry that you leave");
             }
             else if(int.TryParse(input.Message,out int num1))
-            {
-               
+            { 
                 for (int i = 2; i < Math.Sqrt(num1); i++)
                 {
                     divider = num1 % i == 0;
@@ -40,8 +39,7 @@ namespace IsPrimeNumber
             }
             else
             {
-                int.Parse(input.Message);
-                //input.Callbacks.SendMessage("try again, enter a number");
+                input.Callbacks.SendMessage("try again, enter a number");
             }
         }
     }
