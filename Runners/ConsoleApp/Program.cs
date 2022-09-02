@@ -13,9 +13,10 @@ using System.Threading;
 
 namespace ConsoleApp
 {
+   
     class Program : IMessageSender
     {
-        private string level = null;
+        
         static void Main()
         {
             Program program = new Program();
@@ -25,20 +26,17 @@ namespace ConsoleApp
         void Main(IMessageSender messageSender)
         {
             var pluginExecutor = new PluginExecutor(messageSender, new MemoryDal(), new PluginsMenu(), new PluginsManager());
-            var txt1 = "Hi! I am Your amazing bot and I will be happy to be of service to you on several topics.";
-            var txt2 = "Please type the number of the plugin you would like to help, or type help to get the list of options.";
-            var txt3 = "At any point you can type MAIN or HOME to return to the main menu.";
-            OutputTextWithDelay(txt1);
-            Thread.Sleep(1000);
-            OutputTextWithDelay(txt2);
-            Thread.Sleep(1000);
-            OutputTextWithDelay(txt3);
+            Console.WriteLine("Hi! I am Your amazing bot and I will be happy to be of service to you on several topics.");
+            Console.WriteLine("Please type the number of the plugin you would like to help, or type help to get the list of options.");
+            Console.WriteLine("At any point you can type MAIN or HOME to return to the main menu.");
+            
             while (true)
             {
-                level = (level != null) ? "\\" + level : "";
-                Console.Write("main{0}> ", level);
+                var PluginId= pluginExecutor.getPluginId(" ");
+                PluginId = (PluginId!= null && PluginId!="") ? "\\" + PluginId : "";
+                Console.Write("main{0}> ", PluginId);
                 var msg = Console.ReadLine();
-                level = pluginExecutor.Run(msg, " ");
+                pluginExecutor.Run(msg, " ");
             }
         }
 

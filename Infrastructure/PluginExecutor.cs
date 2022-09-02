@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace Infrastructure
 {
+  
     class CallbacksProxy : ICallbacks
     {
         public Action StartSession { get; set; }
@@ -32,8 +33,13 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
+        public string getPluginId(string user)
+        {
+            var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+            return currentPluginId;
+        }
 
-        public string Run(string message, string user)
+        public void Run(string message, string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
@@ -43,13 +49,12 @@ namespace Infrastructure
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
                 {
                     _messageSender.SendMessage(user, msgForUser);
-                    return null;
+                    return ;
                 }
                 var extraData = ExtractExtraData(message);
                 var pluginType = ExtractPluginType(pluginNumber);
                 Execute(pluginType, extraData, user);
                 currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
-                return currentPluginId;
             }
             else
             {
@@ -62,7 +67,6 @@ namespace Infrastructure
                     Execute(currentPluginId, message, user);
                 }
                 currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
-                return currentPluginId;
             }
         }
 
