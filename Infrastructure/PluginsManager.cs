@@ -45,6 +45,7 @@ namespace Infrastructure
             CalculatorPlugin._Id => new CalculatorPlugin(),
             DateConversionToJewishPlugin._Id => new DateConversionToJewishPlugin(),
             TriviaPlugin._Id => new TriviaPlugin(),
+            TranslatePlugin._Id => new TranslatePlugin(),
 
             _ => throw new NotImplementedException(),
         };
@@ -68,6 +69,7 @@ namespace Infrastructure
             DateConversionToJewishPlugin._Id,
             CalculatorPlugin._Id,
             TriviaPlugin._Id,
+            TranslatePlugin._Id,
         };
     }
 }
