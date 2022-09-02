@@ -65,7 +65,7 @@ namespace List
                 HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
                 // Read response as a string.
                 string result = await response.Content.ReadAsStringAsync();
-                input.Callbacks.SendMessage(result.Split(':')[5].Split(',')[0]);
+                input.Callbacks.SendMessage(result.Split(':')[5].Split(',')[0].Split('"')[1]);
             }
             
         }
