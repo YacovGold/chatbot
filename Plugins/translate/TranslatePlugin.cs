@@ -15,7 +15,7 @@ namespace List
     {
         public const string _Id = "translate";
         public string Id => _Id;
-        private static readonly string subscriptionKey = "b10961be28e94111809e936c94648b85";
+        private static readonly string subscriptionKey = Environment.GetEnvironmentVariable("TranslateKey");
         private static readonly string endpoint = "https://api.cognitive.microsofttranslator.com/";
         private static readonly string location = "eastus2";
 
