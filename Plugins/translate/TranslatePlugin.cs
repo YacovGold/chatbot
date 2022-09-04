@@ -40,7 +40,7 @@ namespace List
             }
             else
             {
-                await translate(input.Message, input);
+                translate(input.Message, input).Wait();
             }
         }
         static async Task translate(string textToTranslate, PluginInput input)
