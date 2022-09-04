@@ -19,7 +19,7 @@ namespace List
         private static readonly string endpoint = "https://api.cognitive.microsofttranslator.com/";
         private static readonly string location = "eastus2";
 
-        public void Execute(PluginInput input)
+        public async void Execute(PluginInput input)
         {
             if (input.Message == "")
             {
@@ -29,7 +29,7 @@ namespace List
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("List stopped.");
+                input.Callbacks.SendMessage("Out of translation.");
             }
             else if (input.Message.ToLower().StartsWith("len"))
             {
@@ -40,7 +40,7 @@ namespace List
             }
             else
             {
-                translate(input.Message, input).ToString();
+                await translate(input.Message, input);
             }
         }
         static async Task translate(string textToTranslate, PluginInput input)
