@@ -3,9 +3,11 @@ using BasePlugin.Records;
 using Dal;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Infrastructure
 {
+
     class CallbacksProxy : ICallbacks
     {
         public Action StartSession { get; set; }
@@ -31,10 +33,15 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
+        public string GetCurrentUserPluginId(string user)
+        {
+            var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+            return currentPluginId;
+        }
 
         public void Run(string message, string user)
         {
-            var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+            var currentPluginId = GetCurrentUserPluginId(user);
             if (currentPluginId == null)
             {
                 string msgForUser;
@@ -46,7 +53,6 @@ namespace Infrastructure
                 }
                 var extraData = ExtractExtraData(message);
                 var pluginType = ExtractPluginType(pluginNumber);
-
                 Execute(pluginType, extraData, user);
             }
             else
@@ -108,7 +114,9 @@ namespace Infrastructure
             try
             {
                 var plugin = _pluginsManager.CreatePlugin(pluginId);
+
                 var persistentData = _dal.LoadPluginData(user, pluginId);
+
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
 
             }
