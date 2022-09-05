@@ -36,7 +36,7 @@ namespace Infrastructure
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
-                
+
                 string msgForUser;
                 if (CheckIfUserAskForHelp(message, out msgForUser)
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
@@ -113,7 +113,7 @@ namespace Infrastructure
             catch (Exception)
             {
                 _messageSender.SendMessage(user, "An error occured while executing the plugin, please type help again");
-                var plugin= new PluginInput(input, null, callbacks);
+                var plugin = new PluginInput(input, null, callbacks);
                 plugin.Callbacks.EndSession();
             }
         }
