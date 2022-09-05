@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AlarmClock;
 using List;
-using Timers;
 using DataTimeNow;
 using NumerologyCalculator;
 using IsPrimeNumber;
@@ -36,7 +35,6 @@ namespace Infrastructure
             CountTheWordsPlugin._Id => new CountTheWordsPlugin(),
             CountWordPlugin._Id => new CountWordPlugin(),
             AlarmClockPlugin._Id => new AlarmClockPlugin(new Scheduler(this)),
-            TimersPlugin._Id => new TimersPlugin(new Scheduler(this)),
             Date._Id => new Date(),
             NumerologyCalculatorPlugin._Id => new NumerologyCalculatorPlugin(),
             IsPrimeNumberPlugin._Id => new IsPrimeNumberPlugin(),
@@ -58,7 +56,6 @@ namespace Infrastructure
             ListPlugin._Id,
             CountTheWordsPlugin._Id,
             CountWordPlugin._Id,
-            TimersPlugin._Id,
             AlarmClockPlugin._Id,
             Date._Id,
             NumerologyCalculatorPlugin._Id,
