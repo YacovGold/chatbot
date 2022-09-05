@@ -20,7 +20,6 @@
     <ProjectReference Include="..\Plugins\List\ListPlugin.csproj" />
     <ProjectReference Include="..\Plugins\NumerologyCalculator\NumerologyCalculator.csproj" />
     <ProjectReference Include="..\Plugins\QuadraticEquation\QuadraticEquation.csproj" />
-    <ProjectReference Include="..\Plugins\Timers\Timers.csproj" />
     <ProjectReference Include="..\Plugins\Trivia\Trivia.csproj" />
     <ProjectReference Include="..\Shared\BasePlugin\BasePlugin.csproj" />
     <ProjectReference Include="..\Shared\Dal\Dal\Dal.csproj" />
