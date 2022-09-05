@@ -13,10 +13,8 @@ using System.Threading;
 
 namespace ConsoleApp
 {
-
     class Program : IMessageSender
     {
-
         static void Main()
         {
             Program program = new Program();
