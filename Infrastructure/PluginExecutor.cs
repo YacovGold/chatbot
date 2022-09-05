@@ -31,12 +31,12 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
+        
         public void Run(string message, string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
             if (currentPluginId == null)
             {
-
                 string msgForUser;
                 if (CheckIfUserAskForHelp(message, out msgForUser)
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
@@ -64,6 +64,7 @@ namespace Infrastructure
         {
             return String.Join(' ', message.Split(' ').Skip(1).ToList());
         }
+        
         private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
         {
             var pluginIdFromUser = message.Split(' ')[0];
@@ -93,6 +94,7 @@ namespace Infrastructure
             }
             return false;
         }
+        
         private void Execute(string pluginId, string input, string user)
         {
             var callbacks = new CallbacksProxy
