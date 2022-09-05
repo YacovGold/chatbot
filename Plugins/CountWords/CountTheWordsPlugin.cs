@@ -12,7 +12,7 @@ namespace CountTheWords
     public class CountTheWordsPlugin : IPlugin
     {
 
-        public static string _Id = "count-words";
+        public const string _Id = "count-words";
         public string Id => _Id;
 
 

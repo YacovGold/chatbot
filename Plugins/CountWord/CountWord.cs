@@ -8,7 +8,7 @@ namespace CountWord
 {
     public class CountWordPlugin : IPlugin
     {
-        public static string _Id = "countword";
+        public const string _Id = "countword";
         public string Id => _Id;
 
         public void Execute(PluginInput input)

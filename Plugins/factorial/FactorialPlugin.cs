@@ -5,7 +5,7 @@ namespace Factorial
 {
     public class FactorialPlugin : IPlugin
     {
-        public static string _Id => "factorial";
+        public const string _Id = "factorial";
 
         public string Id => _Id;
 
@@ -18,7 +18,7 @@ namespace Factorial
             }
             else if (input.Message.ToLower() == "exit")
             {
-                input.Callbacks.StartSession();
+                input.Callbacks.EndSession();
                 input.Callbacks.SendMessage("calculat factorial stopeed..");
             }
             else
