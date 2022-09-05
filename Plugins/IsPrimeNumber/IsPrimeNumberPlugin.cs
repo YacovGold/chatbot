@@ -31,9 +31,9 @@ namespace IsPrimeNumber
 
                     if (divider)
                         input.Callbacks.SendMessage(num1 + " is not a prime number, because is divide in " + i);
-
+                    else
+                        input.Callbacks.SendMessage(num1 + " is a prime number");
                 }
-
             }
             else
             {

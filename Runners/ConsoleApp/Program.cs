@@ -1,4 +1,4 @@
-﻿using BasePlugin;
+using BasePlugin;
 using BasePlugin.Interfaces;
 using BasePlugin.Records;
 using CountDown;

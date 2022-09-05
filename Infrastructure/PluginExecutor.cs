@@ -7,14 +7,12 @@ using System.Reflection;
 
 namespace Infrastructure
 {
-
     class CallbacksProxy : ICallbacks
     {
         public Action StartSession { get; set; }
         public Action EndSession { get; set; }
         public Action<string> SendMessage { get; set; }
         public Action<string> SavePluginUserData { get; set; }
-
     }
 
     public class PluginExecutor
@@ -33,6 +31,7 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
+
         public string GetCurrentUserPluginId(string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
@@ -70,7 +69,7 @@ namespace Infrastructure
         {
             return String.Join(' ', message.Split(' ').Skip(1).ToList());
         }
-
+        
         private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
         {
             var pluginIdFromUser = message.Split(' ')[0];
@@ -100,7 +99,7 @@ namespace Infrastructure
             }
             return false;
         }
-
+        
         private void Execute(string pluginId, string input, string user)
         {
             var callbacks = new CallbacksProxy
@@ -114,15 +113,14 @@ namespace Infrastructure
             try
             {
                 var plugin = _pluginsManager.CreatePlugin(pluginId);
-
                 var persistentData = _dal.LoadPluginData(user, pluginId);
-
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
-
             }
             catch (Exception)
             {
-                _messageSender.SendMessage(user, "An error occured while executing the plugin.");
+                _messageSender.SendMessage(user, "An error occured while executing the plugin, please type help again");
+                var plugin = new PluginInput(input, null, callbacks);
+                plugin.Callbacks.EndSession();
             }
         }
     }
