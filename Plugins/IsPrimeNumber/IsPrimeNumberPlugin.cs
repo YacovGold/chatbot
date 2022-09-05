@@ -24,7 +24,7 @@ namespace IsPrimeNumber
                 input.Callbacks.SendMessage("we are sorry that you leave");
             }
             else if(int.TryParse(input.Message,out int num1))
-            { 
+            {
                 for (int i = 2; i < Math.Sqrt(num1); i++)
                 {
                     divider = num1 % i == 0;
@@ -33,9 +33,7 @@ namespace IsPrimeNumber
                         input.Callbacks.SendMessage(num1 + " is not a prime number, because is divide in " + i);
                     else
                         input.Callbacks.SendMessage(num1 + " is a prime number");
-
                 }
-
             }
             else
             {
