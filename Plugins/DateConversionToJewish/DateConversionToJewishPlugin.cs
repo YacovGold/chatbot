@@ -23,7 +23,7 @@ namespace DateConversionToJewish
             else
             {
                 Console.OutputEncoding = new UTF8Encoding();
-                var res = new string(GetHebrewJewishDateString(DateTime.Parse(input.Message)).Reverse().ToArray());
+                var res = GetHebrewJewishDateString(DateTime.Parse(input.Message));
                 input.Callbacks.SendMessage(res);
             }
         }

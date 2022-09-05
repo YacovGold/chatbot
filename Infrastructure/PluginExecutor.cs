@@ -3,6 +3,7 @@ using BasePlugin.Records;
 using Dal;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Infrastructure
 {
@@ -12,7 +13,6 @@ namespace Infrastructure
         public Action EndSession { get; set; }
         public Action<string> SendMessage { get; set; }
         public Action<string> SavePluginUserData { get; set; }
-
     }
 
     public class PluginExecutor
@@ -31,10 +31,16 @@ namespace Infrastructure
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
         }
-        
-        public void Run(string message, string user)
+
+        public string GetCurrentUserPluginId(string user)
         {
             var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+            return currentPluginId;
+        }
+
+        public void Run(string message, string user)
+        {
+            var currentPluginId = GetCurrentUserPluginId(user);
             if (currentPluginId == null)
             {
                 string msgForUser;
@@ -46,7 +52,6 @@ namespace Infrastructure
                 }
                 var extraData = ExtractExtraData(message);
                 var pluginType = ExtractPluginType(pluginNumber);
-
                 Execute(pluginType, extraData, user);
             }
             else
@@ -110,7 +115,6 @@ namespace Infrastructure
                 var plugin = _pluginsManager.CreatePlugin(pluginId);
                 var persistentData = _dal.LoadPluginData(user, pluginId);
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
-
             }
             catch (Exception)
             {
