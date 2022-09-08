@@ -1,6 +1,6 @@
 ﻿namespace BasePlugin.Interfaces
 {
-    public interface IMessageSender
+    public interface IService
     {
         void SendMessage(string userId, string data);
     }

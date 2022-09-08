@@ -13,28 +13,28 @@ namespace Dals
 {
     public class DbDal : IDal
     {
-        private readonly ChatbotContext ctx;
+        private readonly ChatbotContext _ctx;
 
-        public DbDal()
+        public DbDal(ChatbotContext ctx)
         {
-            ctx = new ChatbotContext();
-            ctx.Database.EnsureCreated();
+            _ctx = ctx;
+            _ctx.Database.EnsureCreated();
         }
 
         public string LoadPluginData(string userId, string pluginId)
         {
-            var upd = ctx.userPluginData.Find(userId, pluginId);
+            var upd = _ctx.userPluginData.Find(userId, pluginId);
             return upd?.Data;
         }
 
         public void SavePluginData(string userId, string pluginId, string data)
         {
-            var upd = ctx.userPluginData.Find(userId, pluginId);
+            var upd = _ctx.userPluginData.Find(userId, pluginId);
 
             if (upd is not null)
             {
                 upd.Data = data;
-                ctx.Update(upd);
+                _ctx.Update(upd);
             }
             else
             {
@@ -45,10 +45,10 @@ namespace Dals
                     Data = data
                 };
 
-                ctx.Add(userPluginData);
+                _ctx.Add(userPluginData);
             }
 
-            ctx.SaveChanges();  
+            _ctx.SaveChanges();  
         }
     }
 }

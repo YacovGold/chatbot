@@ -4,23 +4,27 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using System.Threading;
+using Infrastructure;
 using Telegram.Bot.Extensions.Polling;
+using Telegram.Bot;
+using Telegram.Bot.Examples.Polling;
+using Microsoft.Extensions.Hosting;
 
-namespace Telegram.Bot.Examples.Polling
+var builder = Host.CreateDefaultBuilder();
+builder.ConfigureServices(services =>
 {
-    public static class Program
-    {
-        public static async Task Main()
-        {
-            var value = Environment.GetEnvironmentVariable("TelegramKey");
-            var Bot = new TelegramBotClient(value);
-            User me = await Bot.GetMeAsync();
-            Console.Title = me.Username ?? "My awesome Bot";
-            var handlers = new Handlers(Bot);
-            ReceiverOptions receiverOptions = new() { AllowedUpdates = { } };
-            Bot.StartReceiving(handlers.HandleUpdateAsync, handlers.HandleErrorAsync);
-            Console.WriteLine($"Start listening for @{me.Username}");
-            Console.ReadLine();
-        }
-    }
-}
+    services.RegisterServices();
+});
+
+var host = builder.Build();
+
+var value = Environment.GetEnvironmentVariable("TelegramKey");
+var Bot = new TelegramBotClient(value);
+
+User me = await Bot.GetMeAsync();
+Console.Title = me.Username ?? "My awesome Bot";
+ReceiverOptions receiverOptions = new() { AllowedUpdates = { } };
+Handlers.serviceProvider = host.Services;
+Bot.StartReceiving(Handlers.HandleUpdateAsync, Handlers.HandleErrorAsync);
+Console.WriteLine($"Start listening for @{me.Username}");
+Console.ReadLine();
