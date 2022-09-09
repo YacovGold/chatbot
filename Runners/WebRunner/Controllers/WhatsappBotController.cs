@@ -7,25 +7,20 @@ using Twilio.AspNet.Common;
 using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.TwiML;
+using BasePlugin.Records;
+using BasePlugin.Services;
 
 namespace WebRunner.Controllers
 {
     [ApiController]
     [Route("whatsapp")]
-    public class WhatsappBotController : TwilioController, IMessageSender
+    public class WhatsappBotController : TwilioController
     {
-        private static PluginExecutor pluginExecutor;
-        private readonly string accountSid;
-        private readonly string authToken;
-        private readonly string whatsappBotNumber;
+        private static PluginExecutor _pluginExecutor;
 
-        public WhatsappBotController()
+        public WhatsappBotController(PluginExecutor pluginExecutor)
         {
-            pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
-            whatsappBotNumber = Environment.GetEnvironmentVariable("WHATSAPP_BOT_NUMBER");
-            accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
-            authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
-            Twilio.TwilioClient.Init(accountSid, authToken);
+            _pluginExecutor ??= pluginExecutor;
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello whatsapp");
@@ -33,17 +28,9 @@ namespace WebRunner.Controllers
         [HttpPost]
         public IActionResult Post([FromForm] SmsRequest incomingMessage)
         {
-            pluginExecutor.Run(incomingMessage.Body, incomingMessage.From);
+            User user = new User(incomingMessage.From, RunnerType.Whatsapp);
+            _pluginExecutor.Run(incomingMessage.Body, user);
             return Ok();
-        }
-
-        public void SendMessage(string userId, string data)
-        {
-            MessageResource.Create(
-                body: data,
-                from: new Twilio.Types.PhoneNumber(whatsappBotNumber),
-                to: new Twilio.Types.PhoneNumber(userId)
-                );
         }
     }
 }

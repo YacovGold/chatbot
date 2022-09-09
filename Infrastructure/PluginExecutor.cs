@@ -4,6 +4,7 @@ using Dal;
 using System;
 using System.Linq;
 using System.Reflection;
+using static Infrastructure.Container;
 
 namespace Infrastructure
 {
@@ -20,25 +21,25 @@ namespace Infrastructure
         const string SESSION_PLUGIN_ID = "SESSION_PLUGIN_ID";
 
         private readonly IDal _dal;
-        private readonly IMessageSender _messageSender;
         private readonly PluginsMenu _pluginsMenu;
         private readonly PluginsManager _pluginsManager;
+        private readonly ImplementationFactory _factory;
 
-        public PluginExecutor(IMessageSender messageSender, IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager)
+        public PluginExecutor(IDal dal, PluginsMenu pluginsMenu, PluginsManager pluginsManager, ImplementationFactory factory)
         {
             _dal = dal;
-            _messageSender = messageSender;
             _pluginsMenu = pluginsMenu;
             _pluginsManager = pluginsManager;
+            _factory = factory;
         }
 
-        public string GetCurrentUserPluginId(string user)
+        public string GetCurrentUserPluginId(User user)
         {
-            var currentPluginId = _dal.LoadPluginData(user, SESSION_PLUGIN_ID);
+            var currentPluginId = _dal.LoadPluginData(user.Id, SESSION_PLUGIN_ID);
             return currentPluginId;
         }
 
-        public void Run(string message, string user)
+        public void Run(string message, User user)
         {
             var currentPluginId = GetCurrentUserPluginId(user);
             if (currentPluginId == null)
@@ -47,7 +48,7 @@ namespace Infrastructure
                 if (CheckIfUserAskForHelp(message, out msgForUser)
                     || CheckIfIlegalPluginPressed(message, out int pluginNumber, out msgForUser))
                 {
-                    _messageSender.SendMessage(user, msgForUser);
+                    _factory(user.RunnerType).SendMessage(user.Id, msgForUser);
                     return;
                 }
                 var extraData = ExtractExtraData(message);
@@ -62,7 +63,7 @@ namespace Infrastructure
 
         private string ExtractPluginType(int pluginNumber)
         {
-            return PluginsManager.plugins[pluginNumber - 1];
+            return _pluginsManager.GetPlugins()[pluginNumber - 1];
         }
 
         private string ExtractExtraData(string message)
@@ -73,6 +74,7 @@ namespace Infrastructure
         private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
         {
             var pluginIdFromUser = message.Split(' ')[0];
+            var numOfPlugins = _pluginsManager.GetPlugins().Count;
             res = string.Empty;
             pluginNumber = 0;
 
@@ -81,9 +83,9 @@ namespace Infrastructure
                 res = "This option is not recognized, please type help to see the options.";
                 return true;
             }
-            if (pluginNumber > PluginsManager.plugins.Count || pluginNumber <= 0)
+            if (pluginNumber > numOfPlugins || pluginNumber <= 0)
             {
-                res = $"You only allowed to press number between 1 and {PluginsManager.plugins.Count}.";
+                res = $"You only allowed to press number between 1 and {numOfPlugins}.";
                 return true;
             }
             return false;
@@ -99,26 +101,26 @@ namespace Infrastructure
             }
             return false;
         }
-        
-        private void Execute(string pluginId, string input, string user)
+
+        private void Execute(string pluginId, string input, User user)
         {
             var callbacks = new CallbacksProxy
             {
-                StartSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, pluginId),
-                EndSession = () => _dal.SavePluginData(user, SESSION_PLUGIN_ID, null),
-                SendMessage = message => _messageSender.SendMessage(user, message),
-                SavePluginUserData = data => _dal.SavePluginData(user, pluginId, data),
+                StartSession = () => _dal.SavePluginData(user.Id, SESSION_PLUGIN_ID, pluginId),
+                EndSession = () => _dal.SavePluginData(user.Id, SESSION_PLUGIN_ID, null),
+                SendMessage = message => _factory(user.RunnerType).SendMessage(user.Id, message),
+                SavePluginUserData = data => _dal.SavePluginData(user.Id, pluginId, data),
             };
 
             try
             {
-                var plugin = _pluginsManager.CreatePlugin(pluginId);
-                var persistentData = _dal.LoadPluginData(user, pluginId);
+                var plugin = _pluginsManager.GetPlugin(pluginId);
+                var persistentData = _dal.LoadPluginData(user.Id, pluginId);
                 plugin.Execute(new PluginInput(input, persistentData, callbacks));
             }
             catch (Exception)
             {
-                _messageSender.SendMessage(user, "An error occured while executing the plugin, please type help again");
+                _factory(user.RunnerType).SendMessage(user.Id, "An error occured while executing the plugin, please type help again");
                 var plugin = new PluginInput(input, null, callbacks);
                 plugin.Callbacks.EndSession();
             }

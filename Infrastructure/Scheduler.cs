@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
 {
     public class Scheduler : IScheduler
     {
-        PluginsManager _pluginsManager;
+        private readonly IServiceProvider _sp;
 
-        public Scheduler(PluginsManager pluginsManager) => _pluginsManager = pluginsManager;
+        public Scheduler(IServiceProvider sp)
+        {
+            _sp = sp;
+        }
 
         public void Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
@@ -34,8 +38,9 @@ namespace Infrastructure
 
         private async Task _Schedule(TimeSpan ts, string pluginId, string data, ICallbacks callbacks)
         {
+            var _pluginsManager = _sp.GetService<PluginsManager>();
             await Task.Delay(ts);
-            var plugin = (IPluginWithScheduler)_pluginsManager.CreatePlugin(pluginId);
+            var plugin = (IPluginWithScheduler)_pluginsManager.GetPlugin(pluginId);
             plugin.OnScheduler(callbacks, data);
         }
     }

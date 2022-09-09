@@ -4,21 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using BasePlugin.Interfaces;
+using BasePlugin.Services;
 
 namespace WebRunner.Controllers
 {
     [ApiController]
     [Route("telegram")]
-    public class TelegramBotController : ControllerBase, IMessageSender
+    public class TelegramBotController : ControllerBase
     {
-        private static PluginExecutor pluginExecutor;
-        private readonly ITelegramBotClient client;
+        private static PluginExecutor _pluginExecutor;
 
-        public TelegramBotController()
+        public TelegramBotController(PluginExecutor pluginExecutor)
         {
-            pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
-            var value = Environment.GetEnvironmentVariable("TelegramKey");
-            client = new TelegramBotClient(value);
+            _pluginExecutor = pluginExecutor;
+            
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello");
@@ -26,18 +25,14 @@ namespace WebRunner.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Update update)
         {
+            
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
             {
-                pluginExecutor.Run(update.Message.Text, update.Message.Chat.Id.ToString());
+                BasePlugin.Records.User user = new BasePlugin.Records.User(update.Message.Chat.Id.ToString(), RunnerType.Telegram);
+                _pluginExecutor.Run(update.Message.Text, user);
             }
 
             return Ok();
-        }
-
-        public async void SendMessage(string userId, string data)
-        {
-            var chatId = long.Parse(userId);
-            await client.SendTextMessageAsync(chatId: chatId, data);
         }
     }
 }

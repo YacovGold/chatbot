@@ -7,20 +7,16 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using BasePlugin.Interfaces;
+using BasePlugin.Services;
 namespace Telegram.Bot.Examples.Polling
 {
-    public class Handlers : IMessageSender
+    public static class Handlers
     {
-        private static PluginExecutor pluginExecutor;
-        private ITelegramBotClient _botClient;
 
-        public Handlers(ITelegramBotClient botClient)
-        {
-            pluginExecutor ??= new PluginExecutor(this, new DbDal(), new PluginsMenu(), new PluginsManager());
-            _botClient = botClient;
-        }
+        public static IServiceProvider serviceProvider;
 
-        public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
+
+        public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -32,7 +28,7 @@ namespace Telegram.Bot.Examples.Polling
             return Task.CompletedTask;
         }
 
-        public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+        public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             var handler = BotOnMessageReceived(botClient, update.Message!);
             try
@@ -45,25 +41,15 @@ namespace Telegram.Bot.Examples.Polling
             }
         }
 
-        private Task BotOnMessageReceived(ITelegramBotClient botClient, Message message)
+        private static Task BotOnMessageReceived(ITelegramBotClient botClient, Message message)
         {
+            var pluginExecutor = (PluginExecutor)serviceProvider.GetService(typeof(PluginExecutor));
             Console.WriteLine($"Receive message type: {message.Type}");
             if (message.Type != MessageType.Text)
                 return Task.CompletedTask;
-            pluginExecutor.Run(message.Text, message.Chat.Id.ToString());
+            BasePlugin.Records.User user = new BasePlugin.Records.User(message.Chat.Id.ToString(), RunnerType.Telegram);
+            pluginExecutor.Run(message.Text, user);
             return Task.CompletedTask;
-        }
-
-        public async void SendMessage(long userId, string data)
-        {
-            var action = _botClient.SendTextMessageAsync(chatId: userId, data);
-            Message sentMessage = await action;
-        }
-
-        public void SendMessage(string userId, string data)
-        {
-            var chatId = long.Parse(userId);
-            SendMessage(chatId, data);
         }
     }
 }
