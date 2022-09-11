@@ -20,7 +20,7 @@ namespace WebRunner.Controllers
 
         public WhatsappBotController(PluginExecutor pluginExecutor)
         {
-            _pluginExecutor ??= pluginExecutor;
+            _pluginExecutor = pluginExecutor;
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello whatsapp");
