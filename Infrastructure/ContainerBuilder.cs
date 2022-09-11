@@ -9,12 +9,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using List;
+using List;  
 using CountDown;
 using DiceRoller;
 using DB.Data;
 using System.Diagnostics;
 using BasePlugin.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
@@ -25,8 +26,8 @@ namespace Infrastructure
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
             var directory = Directory.GetCurrentDirectory();
-
-            var plugins = Directory.GetFiles(directory, "*.dll")
+            
+            var plugins = Directory.GetFiles(directory, "*.dll", SearchOption.AllDirectories)
                 .SelectMany(pluginDll =>
                 {
                     try
@@ -46,6 +47,7 @@ namespace Infrastructure
                     }
                 })
             .Where(type => typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
+            .Distinct()
             .ToList();
 
             services.AddScoped<IDal, DbDal>();
@@ -71,7 +73,7 @@ namespace Infrastructure
 
             foreach (var plugin in plugins)
             {
-                services.AddSingleton(typeof(IPlugin), plugin);
+                services.AddScoped(typeof(IPlugin), plugin);
             }
 
             return services;

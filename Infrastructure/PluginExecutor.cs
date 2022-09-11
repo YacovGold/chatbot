@@ -104,11 +104,12 @@ namespace Infrastructure
 
         private void Execute(string pluginId, string input, User user)
         {
+            IService service = _factory(user.RunnerType);
             var callbacks = new CallbacksProxy
             {
                 StartSession = () => _dal.SavePluginData(user.Id, SESSION_PLUGIN_ID, pluginId),
                 EndSession = () => _dal.SavePluginData(user.Id, SESSION_PLUGIN_ID, null),
-                SendMessage = message => _factory(user.RunnerType).SendMessage(user.Id, message),
+                SendMessage = message => service.SendMessage(user.Id, message),
                 SavePluginUserData = data => _dal.SavePluginData(user.Id, pluginId, data),
             };
 
@@ -120,7 +121,7 @@ namespace Infrastructure
             }
             catch (Exception)
             {
-                _factory(user.RunnerType).SendMessage(user.Id, "An error occured while executing the plugin, please type help again");
+                service.SendMessage(user.Id, "An error occured while executing the plugin, please type help again");
                 var plugin = new PluginInput(input, null, callbacks);
                 plugin.Callbacks.EndSession();
             }
