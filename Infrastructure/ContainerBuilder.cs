@@ -46,8 +46,8 @@ namespace Infrastructure
                         return new Type[0];
                     }
                 })
-            .Where(type => typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
             .Distinct()
+            .Where(type => typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
             .ToList();
 
             services.AddScoped<IDal, DbDal>();
