@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -55,6 +56,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Plugins\Calculator\Calculator.csproj", "{F47EE0D2-9521-4249-AEA1-436CA22347C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trivia", "Plugins\Trivia\Trivia.csproj", "{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{9F64AFF4-87C1-466E-81F8-052E518E5B30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,6 +161,10 @@ Global
 		{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58FAFD4A-8A30-4DA8-97CA-953A3F68261B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F64AFF4-87C1-466E-81F8-052E518E5B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F64AFF4-87C1-466E-81F8-052E518E5B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F64AFF4-87C1-466E-81F8-052E518E5B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F64AFF4-87C1-466E-81F8-052E518E5B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

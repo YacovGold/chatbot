@@ -4,7 +4,7 @@ using Dal;
 using System;
 using System.Linq;
 using System.Reflection;
-using static Infrastructure.Container;
+using static Infrastructure.ServiceFactory;
 
 namespace Infrastructure
 {
@@ -70,7 +70,7 @@ namespace Infrastructure
         {
             return String.Join(' ', message.Split(' ').Skip(1).ToList());
         }
-        
+
         private bool CheckIfIlegalPluginPressed(string message, out int pluginNumber, out string res)
         {
             var pluginIdFromUser = message.Split(' ')[0];
