@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasePlugin.Services
+namespace Services
 {
     public class ConsolAppService : IService
     {

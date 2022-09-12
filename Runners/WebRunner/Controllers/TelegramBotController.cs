@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using BasePlugin.Interfaces;
-using BasePlugin.Services;
+using Services;
 
 namespace WebRunner.Controllers
 {
@@ -17,7 +17,6 @@ namespace WebRunner.Controllers
         public TelegramBotController(PluginExecutor pluginExecutor)
         {
             _pluginExecutor = pluginExecutor;
-            
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello");

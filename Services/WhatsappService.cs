@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Twilio.Rest.Api.V2010.Account;
 
-namespace BasePlugin.Services
+namespace Services
 {
     public class WhatsappService : IService
     {
-        private readonly string accountSid;
-        private readonly string authToken;
-        private readonly string whatsappBotNumber;
+        private readonly string? accountSid;
+        private readonly string? authToken;
+        private readonly string? whatsappBotNumber;
 
         public WhatsappService()
         {
