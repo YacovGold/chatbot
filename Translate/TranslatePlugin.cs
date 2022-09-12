@@ -25,8 +25,8 @@ namespace List
 
         public TranslatePlugin()
         {
-            var subscriptionKey = "b10961be28e94111809e936c94648b85"; //Environment.GetEnvironmentVariable("TranslateKey");
-            var location = "eastus2";// Environment.GetEnvironmentVariable("locationTranslate");
+            var subscriptionKey = Environment.GetEnvironmentVariable("TranslateKey");
+            var location = Environment.GetEnvironmentVariable("locationTranslate");
 
             if (subscriptionKey == null || location == null)
             {
