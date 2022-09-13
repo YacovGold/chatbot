@@ -7,5 +7,6 @@ namespace BasePlugin.Interfaces
     {
         public string Id { get; }
         public void Execute(PluginInput input);
+        public bool IsEnabled { get { return true; } }
     }
 }

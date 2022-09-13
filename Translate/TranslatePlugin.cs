@@ -15,27 +15,14 @@ namespace List
 {
     public class TranslatePlugin : IPlugin
     {
-        public const string _Id = "translate";
-        public string Id => _Id;
+        public string Id => "translate";
 
         private static readonly string apiEndpoint = "https://api.cognitive.microsofttranslator.com/";
 
-        private string _location;
-        private string _subscriptionKey;
+        private string? location = Environment.GetEnvironmentVariable("PLUGIN_TRANSLATEOR_LOCATION");
+        private string? subscriptionKey = Environment.GetEnvironmentVariable("PLUGIN_TRANSLATEOR_KEY");
 
-        public TranslatePlugin()
-        {
-            var subscriptionKey = Environment.GetEnvironmentVariable("TranslateKey");
-            var location = Environment.GetEnvironmentVariable("locationTranslate");
-
-            if (subscriptionKey == null || location == null)
-            {
-                throw new Exception("Need to set env");
-            }
-
-            _subscriptionKey = subscriptionKey;
-            _location = location;
-        }
+        public bool IsEnabled { get => location != null && subscriptionKey != null; }
 
         public void Execute(PluginInput input)
         {
@@ -81,8 +68,8 @@ namespace List
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(apiEndpoint + route);
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", _subscriptionKey);
-                request.Headers.Add("Ocp-Apim-Subscription-Region", _location);
+                request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                request.Headers.Add("Ocp-Apim-Subscription-Region", location);
 
                 // Send the request and get response.
                 var response = client.Send(request);
