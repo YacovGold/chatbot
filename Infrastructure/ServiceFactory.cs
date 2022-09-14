@@ -18,7 +18,14 @@ namespace Infrastructure
 
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<IDal, DbDal>();
+            if (Environment.GetEnvironmentVariable("CONNECTION_STRING") == null)
+            {
+                services.AddScoped<IDal, MemoryDal>();
+            }
+            else
+            {
+                services.AddScoped<IDal, DbDal>();
+            }
             services.AddDbContext<ChatbotContext>();
             services.AddScoped<IScheduler, Scheduler>();
             services.AddScoped<PluginsManager>();
