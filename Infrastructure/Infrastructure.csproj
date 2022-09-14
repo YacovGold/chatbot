@@ -29,6 +29,7 @@
     <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\Shared\BasePlugin\BasePlugin.csproj" />
     <ProjectReference Include="..\Shared\Dal\Dal\Dal.csproj" />
+    <ProjectReference Include="..\Translate\Translate.csproj" />
   </ItemGroup>
 
 </Project>
