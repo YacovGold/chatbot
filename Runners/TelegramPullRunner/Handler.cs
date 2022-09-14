@@ -7,16 +7,20 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using BasePlugin.Interfaces;
-using BasePlugin.Services;
+using Services;
+
 namespace Telegram.Bot.Examples.Polling
 {
-    public static class Handlers
+    public class Handlers
     {
 
-        public static IServiceProvider serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
+        public Handlers(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
-
-        public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
+        public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -28,7 +32,7 @@ namespace Telegram.Bot.Examples.Polling
             return Task.CompletedTask;
         }
 
-        public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+        public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             var handler = BotOnMessageReceived(botClient, update.Message!);
             try
@@ -41,9 +45,9 @@ namespace Telegram.Bot.Examples.Polling
             }
         }
 
-        private static Task BotOnMessageReceived(ITelegramBotClient botClient, Message message)
+        private Task BotOnMessageReceived(ITelegramBotClient botClient, Message message)
         {
-            var pluginExecutor = (PluginExecutor)serviceProvider.GetService(typeof(PluginExecutor));
+            var pluginExecutor = (PluginExecutor)_serviceProvider.GetService(typeof(PluginExecutor));
             Console.WriteLine($"Receive message type: {message.Type}");
             if (message.Type != MessageType.Text)
                 return Task.CompletedTask;

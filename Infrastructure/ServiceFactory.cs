@@ -7,47 +7,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using List;
-using CountDown;
-using DiceRoller;
 using DB.Data;
-using System.Diagnostics;
-using BasePlugin.Services;
+using Services;
 
 namespace Infrastructure
 {
-    public static class Container
+    public static class ServiceFactory
     {
         public delegate IService ImplementationFactory(RunnerType runner);
 
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            var directory = Directory.GetCurrentDirectory();
-
-            var plugins = Directory.GetFiles(directory, "*.dll")
-                .SelectMany(pluginDll =>
-                {
-                    try
-                    {
-                        if (new FileInfo(pluginDll).Length < 20_000)
-                        {
-                            return Assembly.LoadFrom(pluginDll).GetTypes();
-                        }
-                        else
-                        {
-                            return new Type[0];
-                        }
-                    }
-                    catch (BadImageFormatException)
-                    {
-                        return new Type[0];
-                    }
-                })
-            .Where(type => typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
-            .ToList();
-
             services.AddScoped<IDal, DbDal>();
             services.AddDbContext<ChatbotContext>();
             services.AddScoped<IScheduler, Scheduler>();
@@ -69,13 +39,44 @@ namespace Infrastructure
                 };
             });
 
+            var plugins = GetPluginsTypes();
+
             foreach (var plugin in plugins)
             {
-                services.AddSingleton(typeof(IPlugin), plugin);
+                services.AddScoped(typeof(IPlugin), plugin);
             }
 
             return services;
         }
 
+        private static List<Type> GetPluginsTypes()
+        {
+            var directory = Directory.GetCurrentDirectory();
+
+            var plugins = Directory.GetFiles(directory, "*.dll", SearchOption.AllDirectories)
+                .SelectMany(pluginDll =>
+                {
+                    try
+                    {
+                        if (new FileInfo(pluginDll).Length < 20_000)
+                        {
+                            return Assembly.LoadFrom(pluginDll).GetTypes();
+                        }
+                        else
+                        {
+                            return new Type[0];
+                        }
+                    }
+                    catch (BadImageFormatException)
+                    {
+                        return new Type[0];
+                    }
+                })
+            .Distinct()
+            .Where(type => typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
+            .ToList();
+
+            return plugins;
+        }
     }
 }

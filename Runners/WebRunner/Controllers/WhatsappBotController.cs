@@ -8,7 +8,7 @@ using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.TwiML;
 using BasePlugin.Records;
-using BasePlugin.Services;
+using Services;
 
 namespace WebRunner.Controllers
 {
@@ -20,7 +20,7 @@ namespace WebRunner.Controllers
 
         public WhatsappBotController(PluginExecutor pluginExecutor)
         {
-            _pluginExecutor ??= pluginExecutor;
+            _pluginExecutor = pluginExecutor;
         }
 
         [HttpGet] public IActionResult Get() => Content("Hello whatsapp");
