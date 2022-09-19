@@ -19,6 +19,7 @@ namespace Trivia
         private bool triviaBegun;
 
         public const string _Id = "Trivia";
+        private System.Resources.ResourceManager RM = new System.Resources.ResourceManager("Resource1", System.Reflection.Assembly.GetExecutingAssembly());
 
 
         public string Id => _Id;
