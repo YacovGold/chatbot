@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Reflection;
 using System.Text.Json;
 using BasePlugin.Interfaces;
 using BasePlugin.Records;
+
+
+
 
 
 namespace Trivia
@@ -19,8 +23,6 @@ namespace Trivia
         private bool triviaBegun;
 
         public const string _Id = "Trivia";
-        private System.Resources.ResourceManager RM = new System.Resources.ResourceManager("Resource1", System.Reflection.Assembly.GetExecutingAssembly());
-
 
         public string Id => _Id;
         public void Execute(PluginInput input)
@@ -37,7 +39,7 @@ namespace Trivia
             {
                 input.Callbacks.StartSession();
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage("Welcome to multiplication table trivia quiz, in order to start enter Start , in order to finish enter EXIT.");
+                input.Callbacks.SendMessage(Resources.Plugins.Trivia_Welcome);
 
             }
             else
@@ -50,7 +52,7 @@ namespace Trivia
                         triviaBegun = false;
                         double grade = score / numQest * 100;
                         int grade1 = (int)grade;
-                        string mess = $"The trivia stopped, your grade is: {grade1}";
+                        string mess = $"{Resources.Plugins.Trivia_EndMessage } {grade1}";
                         input.Callbacks.SendMessage(mess);
                     }
                     input.Callbacks.SavePluginUserData(null);
@@ -58,7 +60,7 @@ namespace Trivia
                 else if (input.Message.ToLower() == "start" && !triviaBegun)
                 {
                     triviaBegun = true;
-                    var data = getTrivia();
+                    var data = GetTrivia();
                     var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult, triviaBegun);
                     input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
                     input.Callbacks.SendMessage(data);
@@ -72,7 +74,7 @@ namespace Trivia
                     else if (input.Message.Length > 1 || input.Message[0] < '1' || input.Message[0] > '4')
                     {
                         input.Callbacks.SavePluginUserData(input.PersistentData);
-                        input.Callbacks.SendMessage("Your answer is invalid, You need to enter a number between 1 and 4");
+                        input.Callbacks.SendMessage(Resources.Plugins.Trivia_Eror2);
                     }
                     else
                     {
@@ -80,15 +82,15 @@ namespace Trivia
                         if (int.Parse(input.Message) == trueResult + 1)
                         {
                             score++;
-                            var data = getTrivia();
+                            var data = GetTrivia();
                             var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult, triviaBegun);
                             input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
-                            input.Callbacks.SendMessage($"Very Good!!!\n{data}");
+                            input.Callbacks.SendMessage($"{Resources.Plugins.Trivia_Success}\n{data}");
                         }
                         else
                         {
-                            var mess = ($"Wrong,the correct answer is {trueResult + 1}");
-                            var data = getTrivia();
+                            var mess = ($"{Resources.Plugins.Trivia_Wrong} {trueResult + 1}");
+                            var data = GetTrivia();
                             var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult, triviaBegun);
                             input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
                             input.Callbacks.SendMessage($"{mess}\n{data} ");
@@ -97,21 +99,21 @@ namespace Trivia
                 }
                 else
                 {
-                    input.Callbacks.SendMessage("Eror! in order to start enter Start , in order to finish enter EXIT.");
+                    input.Callbacks.SendMessage(Resources.Plugins.Trivia_Eror1);
 
                 }
             }
         }
 
-        public string getTrivia()
+        public string GetTrivia()
         {
-            nums = rndNums(2, 10, true);
+            nums = RndNums(2, 10, true);
             result = nums[0] * nums[1];
-            allResult = rndNums(4, 100, false);
+            allResult = RndNums(4, 100, false);
             Random rnd = new Random();
             trueResult = rnd.Next(4);
             allResult.SetValue(result, trueResult);
-            var data = ($"what the result of: {nums[0]} * {nums[1]} =\n");
+            var data = ($"{Resources.Plugins.Trivia_Question} {nums[0]} * {nums[1]} =\n");
             for (int i = 0; i < allResult.Length; i++)
             {
                 data += ($"{i + 1}) {allResult[i]}   ");
@@ -119,7 +121,7 @@ namespace Trivia
             return data;
         }
 
-        private int[] rndNums(int numResult, int maxOfNum, bool repeat)
+        private int[] RndNums(int numResult, int maxOfNum, bool repeat)
         {
             Random random = new Random();
             int[] resultRnd = new int[numResult];
