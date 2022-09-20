@@ -3,11 +3,15 @@ using BasePlugin.Interfaces;
 using BasePlugin.Records;
 using CountDown;
 using Dals;
+using DataTimeNow;
 using DiceRoller;
 using Infrastructure;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualBasic;
 using Services;
 using System;
+using Telegram.Bot.Types;
+using User = BasePlugin.Records.User;
 
 var builder = Host.CreateDefaultBuilder();
 
@@ -28,5 +32,8 @@ while (true)
     var msg = Console.ReadLine();
     pluginExecutor.Run(msg, user);
 }
+
+
+
 
 
