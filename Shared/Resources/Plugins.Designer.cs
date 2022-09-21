@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The trivia stopped, your grade is:.
+        ///   Looks up a localized string similar to The trivia stopped, your grade is: {0}.
         /// </summary>
         public static string Trivia_EndMessage {
             get {
@@ -72,23 +72,23 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Eror! in order to start enter Start , in order to finish enter EXIT..
         /// </summary>
-        public static string Trivia_Eror1 {
+        public static string Trivia_ErrorIncorrectTyping {
             get {
-                return ResourceManager.GetString("Trivia_Eror1", resourceCulture);
+                return ResourceManager.GetString("Trivia_ErrorIncorrectTyping", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Your answer is invalid, You need to enter a number between 1 and 4.
         /// </summary>
-        public static string Trivia_Eror2 {
+        public static string Trivia_ErrorOutScope {
             get {
-                return ResourceManager.GetString("Trivia_Eror2", resourceCulture);
+                return ResourceManager.GetString("Trivia_ErrorOutScope", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to what the result of:.
+        ///   Looks up a localized string similar to what the result of: {0} * {1} = {2}.
         /// </summary>
         public static string Trivia_Question {
             get {
@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wrong,the correct answer is.
+        ///   Looks up a localized string similar to Wrong, the correct answer is {0}.
         /// </summary>
         public static string Trivia_Wrong {
             get {

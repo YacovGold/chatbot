@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Trivia_EndMessage" xml:space="preserve">
-    <value>The trivia stopped, your grade is:</value>
+    <value>The trivia stopped, your grade is: {0}</value>
   </data>
-  <data name="Trivia_Eror1" xml:space="preserve">
+  <data name="Trivia_ErrorIncorrectTyping" xml:space="preserve">
     <value>Eror! in order to start enter Start , in order to finish enter EXIT.</value>
   </data>
-  <data name="Trivia_Eror2" xml:space="preserve">
+  <data name="Trivia_ErrorOutScope" xml:space="preserve">
     <value>Your answer is invalid, You need to enter a number between 1 and 4</value>
   </data>
   <data name="Trivia_Question" xml:space="preserve">
-    <value>what the result of:</value>
+    <value>what the result of: {0} * {1} = {2}</value>
   </data>
   <data name="Trivia_Success" xml:space="preserve">
     <value>Vary Good!!!</value>
@@ -136,6 +136,6 @@
     <value>Welcome to multiplication table trivia quiz, in order to start enter Start , in order to finish enter EXIT.</value>
   </data>
   <data name="Trivia_Wrong" xml:space="preserve">
-    <value>Wrong,the correct answer is</value>
+    <value>Wrong, the correct answer is {0}</value>
   </data>
 </root>

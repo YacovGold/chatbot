@@ -4,10 +4,6 @@ using System.Text.Json;
 using BasePlugin.Interfaces;
 using BasePlugin.Records;
 
-
-
-
-
 namespace Trivia
 {
     record PersistentDataStructure(double score, double numQest, int trueResult, bool triviaBegun);
@@ -52,7 +48,7 @@ namespace Trivia
                         triviaBegun = false;
                         double grade = score / numQest * 100;
                         int grade1 = (int)grade;
-                        string mess = $"{Resources.Plugins.Trivia_EndMessage } {grade1}";
+                        string mess = String.Format(Resources.Plugins.Trivia_EndMessage,grade1);
                         input.Callbacks.SendMessage(mess);
                     }
                     input.Callbacks.SavePluginUserData(null);
@@ -74,7 +70,7 @@ namespace Trivia
                     else if (input.Message.Length > 1 || input.Message[0] < '1' || input.Message[0] > '4')
                     {
                         input.Callbacks.SavePluginUserData(input.PersistentData);
-                        input.Callbacks.SendMessage(Resources.Plugins.Trivia_Eror2);
+                        input.Callbacks.SendMessage(Resources.Plugins.Trivia_ErrorOutScope);
                     }
                     else
                     {
@@ -89,7 +85,7 @@ namespace Trivia
                         }
                         else
                         {
-                            var mess = ($"{Resources.Plugins.Trivia_Wrong} {trueResult + 1}");
+                            var mess = string.Format(Resources.Plugins.Trivia_Wrong,trueResult+1);
                             var data = GetTrivia();
                             var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult, triviaBegun);
                             input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
@@ -99,7 +95,7 @@ namespace Trivia
                 }
                 else
                 {
-                    input.Callbacks.SendMessage(Resources.Plugins.Trivia_Eror1);
+                    input.Callbacks.SendMessage(Resources.Plugins.Trivia_ErrorIncorrectTyping);
 
                 }
             }
@@ -113,7 +109,7 @@ namespace Trivia
             Random rnd = new Random();
             trueResult = rnd.Next(4);
             allResult.SetValue(result, trueResult);
-            var data = ($"{Resources.Plugins.Trivia_Question} {nums[0]} * {nums[1]} =\n");
+            var data = string.Format(Resources.Plugins.Trivia_Question, nums[0], nums[1],"\n");
             for (int i = 0; i < allResult.Length; i++)
             {
                 data += ($"{i + 1}) {allResult[i]}   ");
