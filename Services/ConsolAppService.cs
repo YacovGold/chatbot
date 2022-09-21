@@ -11,10 +11,10 @@ namespace Services
     {
         public void SendMessage(string userId, string data)
         {
-            Console.WriteLine(FixStringToSupport(data));
+            Console.WriteLine(FixStringToSupportHebrew(data));
         }
 
-        public string FixStringToSupport(string data)
+        public string FixStringToSupportHebrew(string data)
         {
             var first = 0;
             var last = 0;
@@ -64,7 +64,7 @@ namespace Services
             return ret;
         }
 
-        static bool IsHebrewOrNeutralChar(char c)
+        bool IsHebrewOrNeutralChar(char c)
         {
             if (IsHebrewText(c))
             {
@@ -89,13 +89,13 @@ namespace Services
             return false;
         }
 
-        static bool IsHebrewText(char c)
+        bool IsHebrewText(char c)
         {
             var result = c <= 'ת' && c >= 'א';
             return result;
         }
 
-        static string Reverse(string s)
+        string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
