@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 
-namespace BasePlugin.Services
+namespace Services
 {
     public class TelegramService : IService
     {

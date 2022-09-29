@@ -37,7 +37,11 @@ namespace Infrastructure
 
         public List<string> GetPlugins()
         {
-            return _plugins.Select(v => v.Id).ToList();
+            return _plugins
+                .OrderBy(v=>v.Id)
+                .Where(v => v.IsEnabled)
+                .Select(v => v.Id)
+                .ToList();
         }
     }
 }
