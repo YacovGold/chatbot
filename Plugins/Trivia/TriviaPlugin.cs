@@ -25,7 +25,7 @@ namespace Trivia
         {
             if (string.IsNullOrEmpty(input.PersistentData) == false)
             {
-                var trivia = JsonSerializer.Deserialize<PersistentDataStructure>(input.PersistentData);
+                var trivia = JsonSerializer.Deserialize<PersistentDataStructure>(input.PersistentData)!;
                 score = trivia.score;
                 numQest = trivia.numQest;
                 trueResult = trivia.trueResult;
@@ -36,7 +36,6 @@ namespace Trivia
                 input.Callbacks.StartSession();
                 input.Callbacks.SavePluginUserData(input.PersistentData);
                 input.Callbacks.SendMessage(Resources.Plugins.Trivia_Welcome);
-
             }
             else
             {
@@ -48,7 +47,7 @@ namespace Trivia
                         triviaBegun = false;
                         double grade = score / numQest * 100;
                         int grade1 = (int)grade;
-                        string mess = String.Format(Resources.Plugins.Trivia_EndMessage,grade1);
+                        string mess = String.Format(Resources.Plugins.Trivia_EndMessage, grade1);
                         input.Callbacks.SendMessage(mess);
                     }
                     input.Callbacks.SavePluginUserData(null);
@@ -85,7 +84,7 @@ namespace Trivia
                         }
                         else
                         {
-                            var mess = string.Format(Resources.Plugins.Trivia_Wrong,trueResult+1);
+                            var mess = string.Format(Resources.Plugins.Trivia_Wrong, trueResult + 1);
                             var data = GetTrivia();
                             var currnetTrivia = new PersistentDataStructure(score, numQest, trueResult, triviaBegun);
                             input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(currnetTrivia));
@@ -109,7 +108,7 @@ namespace Trivia
             Random rnd = new Random();
             trueResult = rnd.Next(4);
             allResult.SetValue(result, trueResult);
-            var data = string.Format(Resources.Plugins.Trivia_Question, nums[0], nums[1],"\n");
+            var data = string.Format(Resources.Plugins.Trivia_Question, nums[0], nums[1], "\n");
             for (int i = 0; i < allResult.Length; i++)
             {
                 data += ($"{i + 1}) {allResult[i]}   ");
