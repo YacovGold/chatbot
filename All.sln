@@ -63,6 +63,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Translate", "Translate\Tran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{ABFC848A-104E-4D85-BD4B-8667F4DE5D16}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Shared\Resources\Resources.csproj", "{F19CDC16-E023-43CB-A980-F8CE8D39E65B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{ABFC848A-104E-4D85-BD4B-8667F4DE5D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFC848A-104E-4D85-BD4B-8667F4DE5D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABFC848A-104E-4D85-BD4B-8667F4DE5D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F19CDC16-E023-43CB-A980-F8CE8D39E65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19CDC16-E023-43CB-A980-F8CE8D39E65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19CDC16-E023-43CB-A980-F8CE8D39E65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19CDC16-E023-43CB-A980-F8CE8D39E65B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -204,6 +210,7 @@ Global
 		{F47EE0D2-9521-4249-AEA1-436CA22347C9} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
 		{58FAFD4A-8A30-4DA8-97CA-953A3F68261B} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
 		{058426E4-503D-4780-83BD-C7B18252711C} = {C780C672-B2D3-4C38-9413-1ABBA88885BD}
+		{F19CDC16-E023-43CB-A980-F8CE8D39E65B} = {E7F48F48-E9EC-4A7E-9B90-1C1EFB91D2FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {736E1636-C7C4-4B01-AC5C-397D68000922}
