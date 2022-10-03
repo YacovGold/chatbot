@@ -1,0 +1,22 @@
+name: Merge develop Into release
+
+on: 
+  pull_request:
+    branches: [develop]
+    types: [closed]
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge develop -> release
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: development
+          target_branch: staging
+          github_token: ${{ github.token }}
