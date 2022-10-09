@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "develop",  "CI_Workflows" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "develop", "CI_Workflows" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
