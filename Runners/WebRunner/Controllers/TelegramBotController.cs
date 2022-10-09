@@ -14,7 +14,7 @@ namespace WebRunner.Controllers
     {
         private static PluginExecutor _pluginExecutor;
 
-        public TelegramBotController(PluginExecutor pluginExecutor)
+        public TelegramBotController (PluginExecutor pluginExecutor)
         {
             _pluginExecutor = pluginExecutor;
         }
