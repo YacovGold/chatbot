@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="New Rule Set" Description=" " ToolsVersion="17.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1000" Action="Info" />
+    <Rule Id="SA1003" Action="Hidden" />
+    <Rule Id="SA1008" Action="Hidden" />
+    <Rule Id="SA1009" Action="Hidden" />
+    <Rule Id="SA1025" Action="Hidden" />
+    <Rule Id="SA1028" Action="Hidden" />
+    <Rule Id="SA1101" Action="Info" />
+    <Rule Id="SA1108" Action="Info" />
+    <Rule Id="SA1111" Action="Hidden" />
+    <Rule Id="SA1119" Action="Hidden" />
+    <Rule Id="SA1122" Action="Info" />
+    <Rule Id="SA1129" Action="Info" />
+    <Rule Id="SA1134" Action="Hidden" />
+    <Rule Id="SA1200" Action="Info" />
+    <Rule Id="SA1201" Action="Info" />
+    <Rule Id="SA1202" Action="Info" />
+    <Rule Id="SA1208" Action="Info" />
+    <Rule Id="SA1210" Action="Info" />
+    <Rule Id="SA1300" Action="Hidden" />
+    <Rule Id="SA1309" Action="None" />
+    <Rule Id="SA1310" Action="Info" />
+    <Rule Id="SA1311" Action="Hidden" />
+    <Rule Id="SA1312" Action="Hidden" />
+    <Rule Id="SA1313" Action="Hidden" />
+    <Rule Id="SA1400" Action="Info" />
+    <Rule Id="SA1413" Action="Hidden" />
+    <Rule Id="SA1500" Action="Hidden" />
+    <Rule Id="SA1502" Action="None" />
+    <Rule Id="SA1503" Action="Hidden" />
+    <Rule Id="SA1505" Action="Hidden" />
+    <Rule Id="SA1507" Action="Hidden" />
+    <Rule Id="SA1508" Action="Hidden" />
+    <Rule Id="SA1509" Action="Hidden" />
+    <Rule Id="SA1512" Action="Hidden" />
+    <Rule Id="SA1513" Action="Hidden" />
+    <Rule Id="SA1514" Action="Hidden" />
+    <Rule Id="SA1515" Action="Hidden" />
+    <Rule Id="SA1516" Action="Hidden" />
+    <Rule Id="SA1517" Action="Hidden" />
+    <Rule Id="SA1518" Action="Hidden" />
+    <Rule Id="SA1600" Action="None" />
+    <Rule Id="SA1602" Action="None" />
+    <Rule Id="SA1604" Action="Info" />
+    <Rule Id="SA1611" Action="Info" />
+    <Rule Id="SA1615" Action="Info" />
+    <Rule Id="SA1633" Action="None" />
+  </Rules>
+</RuleSet>
