@@ -39,7 +39,7 @@ namespace DiceRoller
 
             var ses = new PersistentDataStructure(dice1, dice2);
             input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(ses));
-            input.Callbacks.SendMessage($"You: {dice1} {dice2}");
+            input.Callbacks.SendMessage(string.Format(Resources.Plugins.DiceRoller_Res,dice1,dice2));
         }
     }
 }

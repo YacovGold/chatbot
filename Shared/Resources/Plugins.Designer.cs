@@ -61,6 +61,366 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alarm Clock fired.
+        /// </summary>
+        public static string AlarmClock_Fired {
+            get {
+                return ResourceManager.GetString("AlarmClock_Fired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alarm Clock set.
+        /// </summary>
+        public static string AlarmClock_Set {
+            get {
+                return ResourceManager.GetString("AlarmClock_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write the time in format - hh:mm.
+        /// </summary>
+        public static string AlarmClock_Welcome {
+            get {
+                return ResourceManager.GetString("AlarmClock_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not divide by zero.
+        /// </summary>
+        public static string Calculator_NotDivide {
+            get {
+                return ResourceManager.GetString("Calculator_NotDivide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type an addition or subtraction or multiplication or division exercise. to exit type exit..
+        /// </summary>
+        public static string Calculator_Welcome {
+            get {
+                return ResourceManager.GetString("Calculator_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countdown failed, string input nust represent vaild seconds..
+        /// </summary>
+        public static string Countdown_Failed {
+            get {
+                return ResourceManager.GetString("Countdown_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fired..
+        /// </summary>
+        public static string Countdown_Fired {
+            get {
+                return ResourceManager.GetString("Countdown_Fired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countdown started..
+        /// </summary>
+        public static string Countdown_Started {
+            get {
+                return ResourceManager.GetString("Countdown_Started", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of words is {0}.
+        /// </summary>
+        public static string CountWords_Num {
+            get {
+                return ResourceManager.GetString("CountWords_Num", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count words stopped..
+        /// </summary>
+        public static string CountWords_Stopped {
+            get {
+                return ResourceManager.GetString("CountWords_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count words started. Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string CountWords_Welcome {
+            get {
+                return ResourceManager.GetString("CountWords_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Date is: {0}.
+        /// </summary>
+        public static string DataTimeNow_Res {
+            get {
+                return ResourceManager.GetString("DataTimeNow_Res", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a date: Day/Month/Year.
+        /// </summary>
+        public static string DateConversionToJewish_Welcome {
+            get {
+                return ResourceManager.GetString("DateConversionToJewish_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your dice numbers are: {0} &amp; {1}.
+        /// </summary>
+        public static string DiceRoller_Res {
+            get {
+                return ResourceManager.GetString("DiceRoller_Res", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Echo stopped..
+        /// </summary>
+        public static string Echo_Stopped {
+            get {
+                return ResourceManager.GetString("Echo_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Echo started. Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string Echo_Welcome {
+            get {
+                return ResourceManager.GetString("Echo_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The factorial is: {0}.
+        /// </summary>
+        public static string Factorial_Res {
+            get {
+                return ResourceManager.GetString("Factorial_Res", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to calculat factorial stopeed...
+        /// </summary>
+        public static string Factorial_Stopped {
+            get {
+                return ResourceManager.GetString("Factorial_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert the number to calculate its factorial, Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string Factorial_Welcome {
+            get {
+                return ResourceManager.GetString("Factorial_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is a prime number..
+        /// </summary>
+        public static string IsPrimeNumber_IsPrime {
+            get {
+                return ResourceManager.GetString("IsPrimeNumber_IsPrime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a prime number, because is divide in {1}.
+        /// </summary>
+        public static string IsPrimeNumber_NotPrime {
+            get {
+                return ResourceManager.GetString("IsPrimeNumber_NotPrime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to we are sorry that you leave..
+        /// </summary>
+        public static string IsPrimeNumber_Stopped {
+            get {
+                return ResourceManager.GetString("IsPrimeNumber_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to try again, enter a number..
+        /// </summary>
+        public static string IsPrimeNumber_TryAgin {
+            get {
+                return ResourceManager.GetString("IsPrimeNumber_TryAgin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type a number:      Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string IsPrimeNumber_Welcome {
+            get {
+                return ResourceManager.GetString("IsPrimeNumber_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All list tasks: {0}.
+        /// </summary>
+        public static string List_AllList {
+            get {
+                return ResourceManager.GetString("List_AllList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete task: {0}.
+        /// </summary>
+        public static string List_DeleteTask {
+            get {
+                return ResourceManager.GetString("List_DeleteTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Enter &apos;Add&apos; to add task. Enter &apos;Delete&apos; to delete task. Enter &apos;List&apos; to view all list. Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string List_ErorIncorrectInput {
+            get {
+                return ResourceManager.GetString("List_ErorIncorrectInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New task: {0}.
+        /// </summary>
+        public static string List_NewTask {
+            get {
+                return ResourceManager.GetString("List_NewTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List stopped..
+        /// </summary>
+        public static string List_Stopped {
+            get {
+                return ResourceManager.GetString("List_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List started. Enter &apos;Add&apos; to add task. Enter &apos;Delete&apos; to delete task. Enter &apos;List&apos; to view all list. Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string List_Welcome {
+            get {
+                return ResourceManager.GetString("List_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to calculat numerology stopeed...
+        /// </summary>
+        public static string Numerology_Stopped {
+            get {
+                return ResourceManager.GetString("Numerology_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value of  {0} is: {1}.
+        /// </summary>
+        public static string Numerology_Value {
+            get {
+                return ResourceManager.GetString("Numerology_Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please type a letter to know the numerology...
+        /// </summary>
+        public static string Numerology_Welcome {
+            get {
+                return ResourceManager.GetString("Numerology_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The above equation doesn&apos;t have any solution!.
+        /// </summary>
+        public static string QuadraticEquation_NoSolution {
+            get {
+                return ResourceManager.GetString("QuadraticEquation_NoSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This equation has one result: {0}.
+        /// </summary>
+        public static string QuadraticEquation_OneResult {
+            get {
+                return ResourceManager.GetString("QuadraticEquation_OneResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the first solution is:{0}, the second solution is: {1}.
+        /// </summary>
+        public static string QuadraticEquation_TowResult {
+            get {
+                return ResourceManager.GetString("QuadraticEquation_TowResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculate a quadratic equation, Please enter entries of, type &apos; &apos; btween an integer: A B C:.
+        /// </summary>
+        public static string QuadraticEquation_Welcome {
+            get {
+                return ResourceManager.GetString("QuadraticEquation_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out of translation..
+        /// </summary>
+        public static string Translate_Stopped {
+            get {
+                return ResourceManager.GetString("Translate_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the translation language: {0}.
+        /// </summary>
+        public static string Translate_Translation {
+            get {
+                return ResourceManager.GetString("Translate_Translation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type a sentence to translate. Enter &apos;len&apos; to which language to translate into. Enter &apos;Exit&apos; to stop..
+        /// </summary>
+        public static string Translate_Welcome {
+            get {
+                return ResourceManager.GetString("Translate_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The trivia stopped, your grade is: {0}.
         /// </summary>
         public static string Trivia_EndMessage {

@@ -13,7 +13,7 @@ namespace DataTimeNow
         public void Execute(PluginInput input)
         {
             var userTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Israel Standard Time");
-            input.Callbacks.SendMessage("The Date is: " + userTime.ToString());
+            input.Callbacks.SendMessage(string.Format(Resources.Plugins.DataTimeNow_Res, userTime.ToString()));
         }
     }
 }

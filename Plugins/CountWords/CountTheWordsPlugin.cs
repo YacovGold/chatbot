@@ -21,19 +21,19 @@ namespace CountTheWords
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Count words started. Enter 'Exit' to stop.");
+                input.Callbacks.SendMessage(Resources.Plugins.CountWords_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("Count words stopped.");
+                input.Callbacks.SendMessage(Resources.Plugins.CountWords_Stopped);
             }
             else
             {
                 var numberOfWords = input.Message.Split(' ').Where(s => !string.IsNullOrEmpty(s)).Count();
 
                 input.Callbacks.SavePluginUserData(numberOfWords.ToString());
-                input.Callbacks.SendMessage("The number of words is " + numberOfWords);
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.CountWords_Num,numberOfWords));
             }
         }
     }

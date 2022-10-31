@@ -20,7 +20,7 @@ namespace CountDown
             if (input.Message == "")
             {
                 _scheduler.Schedule(TimeSpan.FromSeconds(1), Id, "", input.Callbacks);
-                input.Callbacks.SendMessage("Countdown started.");
+                input.Callbacks.SendMessage(Resources.Plugins.Countdown_Started);
             }
             else
             {
@@ -28,18 +28,18 @@ namespace CountDown
                 {
                     var interval = int.Parse(input.Message);
                     _scheduler.Schedule(TimeSpan.FromSeconds(interval), Id, "", input.Callbacks);
-                    input.Callbacks.SendMessage("Countdown started.");
+                    input.Callbacks.SendMessage(Resources.Plugins.Countdown_Started);
                 }
                 catch (FormatException)
                 {
-                    input.Callbacks.SendMessage("Countdown failed, string input nust represent vaild seconds.");
+                    input.Callbacks.SendMessage(Resources.Plugins.Countdown_Failed);
                 }
             }
         }
 
         public void OnScheduler(ICallbacks callbacks, string data)
         {
-            callbacks.SendMessage("Fired.");
+            callbacks.SendMessage(Resources.Plugins.Countdown_Fired);
         }
     }
 }

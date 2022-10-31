@@ -24,7 +24,8 @@ namespace AlarmClock
 
             if (string.IsNullOrWhiteSpace(input.Message))
             {
-                input.Callbacks.SendMessage("Please write the time in format - hh:mm");
+                input.Callbacks.SendMessage(Resources.Plugins.AlarmClock_Welcome);
+                input.Callbacks.StartSession();
                 return;
             }
             var sh = input.Message.Split(':').First();
@@ -41,18 +42,20 @@ namespace AlarmClock
                 else
                 {
                     _scheduler.Schedule(d1, Id, "", input.Callbacks);
-                    input.Callbacks.SendMessage("Alarm Clock set");
+                    input.Callbacks.SendMessage(Resources.Plugins.AlarmClock_Set);
+                    input.Callbacks.EndSession();
                 }
             }
             else
             {
-                input.Callbacks.SendMessage("Please write the time in format - aa: mm");
+                input.Callbacks.SendMessage(Resources.Plugins.AlarmClock_Welcome);
+                input.Callbacks.StartSession();
             }
         }
 
         public void OnScheduler(ICallbacks callbacks, string data)
         {
-            callbacks.SendMessage("Alarm Clock fired");
+            callbacks.SendMessage(Resources.Plugins.AlarmClock_Fired);
         }
     }
 }

@@ -13,12 +13,12 @@ namespace NumerologyCalculator
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("please type a letter to know the numerology..");
+                input.Callbacks.SendMessage(Resources.Plugins.Numerology_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("calculat numerology stopeed..");
+                input.Callbacks.SendMessage(Resources.Plugins.Numerology_Stopped);
             }
             else
             {
@@ -34,7 +34,7 @@ namespace NumerologyCalculator
                     sum += letterUser[i] - 96;
                 }
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage($"The value of  {letterUser} is: {sum}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.Numerology_Value, letterUser, sum));
             }
         }
     }

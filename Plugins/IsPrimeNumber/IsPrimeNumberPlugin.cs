@@ -16,12 +16,12 @@ namespace IsPrimeNumber
             if(input.Message==string.Empty)
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Please type a number: ");
+                input.Callbacks.SendMessage(Resources.Plugins.IsPrimeNumber_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("we are sorry that you leave");
+                input.Callbacks.SendMessage(Resources.Plugins.IsPrimeNumber_Stopped);
             }
             else if(int.TryParse(input.Message,out int num1))
             {
@@ -30,14 +30,14 @@ namespace IsPrimeNumber
                     divider = num1 % i == 0;
 
                     if (divider)
-                        input.Callbacks.SendMessage(num1 + " is not a prime number, because is divide in " + i);
+                        input.Callbacks.SendMessage(string.Format(Resources.Plugins.IsPrimeNumber_NotPrime, num1, i));
                     else
-                        input.Callbacks.SendMessage(num1 + " is a prime number");
+                        input.Callbacks.SendMessage(string.Format(Resources.Plugins.IsPrimeNumber_IsPrime, num1));
                 }
             }
             else
             {
-                input.Callbacks.SendMessage("try again, enter a number");
+                input.Callbacks.SendMessage(Resources.Plugins.IsPrimeNumber_TryAgin);
             }
         }
     }
