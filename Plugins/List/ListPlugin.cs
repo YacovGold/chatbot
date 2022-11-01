@@ -60,7 +60,7 @@ namespace List
             {
                 string listtasks = string.Join("\r\n", list);
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage(string.Format(Resources.Plugins.List_AllList, listtasks));
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.List_AllList, "\r\n"+listtasks));
             }
             else
             {
