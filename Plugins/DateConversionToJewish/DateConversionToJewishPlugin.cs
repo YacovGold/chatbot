@@ -18,13 +18,15 @@ namespace DateConversionToJewish
         {
             if (input.Message == "")
             {
-                input.Callbacks.SendMessage("Please enter a date: Day/Month/Year ");
+                input.Callbacks.SendMessage(Resources.Plugins.DateConversionToJewish_Welcome);
+                input.Callbacks.StartSession();
             }
             else
             {
                 Console.OutputEncoding = new UTF8Encoding();
                 var res = GetHebrewJewishDateString(DateTime.Parse(input.Message));
                 input.Callbacks.SendMessage(res);
+                input.Callbacks.EndSession();
             }
         }
 

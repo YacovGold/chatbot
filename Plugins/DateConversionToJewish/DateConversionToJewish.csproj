@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\BasePlugin\BasePlugin.csproj" />
+    <ProjectReference Include="..\..\Shared\Resources\Resources.csproj" />
   </ItemGroup>
 
 </Project>

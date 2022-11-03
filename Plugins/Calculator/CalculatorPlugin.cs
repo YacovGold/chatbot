@@ -12,7 +12,12 @@ namespace Calculator
         {
             if (input.Message == "")
             {
-                input.Callbacks.SendMessage("please type a letter to know the numerology..");
+                input.Callbacks.SendMessage(Resources.Plugins.Calculator_Welcome);
+                input.Callbacks.StartSession();
+            }
+            else if (input.Message.ToLower() == "exit")
+            {
+                input.Callbacks.EndSession();
             }
             else
             {
@@ -32,7 +37,7 @@ namespace Calculator
             {
                 if (input.IndexOf("/0") + 1 != '.')     // Checking if the input contains a fractional number 0
                 {
-                    throw new InvalidOperationException("Do not divide by zero");
+                    throw new InvalidOperationException(Resources.Plugins.Calculator_NotDivide);
                 }
             }
             if (input[0] == '-')                   // Checking if the input starts with a minus        

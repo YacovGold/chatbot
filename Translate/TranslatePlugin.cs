@@ -29,19 +29,19 @@ namespace List
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Type a sentence to translate. Enter 'len' to which language to translate into. Enter 'Exit' to stop");
+                input.Callbacks.SendMessage(Resources.Plugins.Translate_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("Out of translation.");
+                input.Callbacks.SendMessage(Resources.Plugins.Translate_Stopped);
             }
             else if (input.Message.ToLower().StartsWith("len"))
             {
                 var str = input.Message.Substring("len".Length).Trim();
                 input.Callbacks.SavePluginUserData(str);
 
-                input.Callbacks.SendMessage($"the translation language: {str}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.Translate_Translation,str));
             }
             else if (input.PersistentData == null)
             {

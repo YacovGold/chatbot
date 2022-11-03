@@ -28,13 +28,13 @@ namespace List
             {
                 input.Callbacks.StartSession();
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage("List started. Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
+                input.Callbacks.SendMessage(Resources.Plugins.List_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage("List stopped.");
+                input.Callbacks.SendMessage(Resources.Plugins.List_Stopped);
             }
             else if (input.Message.ToLower().StartsWith("add"))
             {
@@ -44,7 +44,7 @@ namespace List
                 var data = new PersistentDataStructure(list);
 
                 input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(data));
-                input.Callbacks.SendMessage($"New task: {str}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.List_NewTask, str));
             }
             else if (input.Message.ToLower().StartsWith("delete"))
             {
@@ -54,18 +54,18 @@ namespace List
                 var data = new PersistentDataStructure(list);
 
                 input.Callbacks.SavePluginUserData(JsonSerializer.Serialize(data));
-                input.Callbacks.SendMessage($"Delete task: {str}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.List_DeleteTask, str));
             }
             else if (input.Message.ToLower() == "list")
             {
                 string listtasks = string.Join("\r\n", list);
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage($"All list tasks:\r\n{listtasks}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.List_AllList, "\r\n"+listtasks));
             }
             else
             {
                 input.Callbacks.SavePluginUserData(input.PersistentData);
-                input.Callbacks.SendMessage("Error! Enter 'Add' to add task. Enter 'Delete' to delete task. Enter 'List' to view all list. Enter 'Exit' to stop.");
+                input.Callbacks.SendMessage(Resources.Plugins.List_ErorIncorrectInput);
             }
         }
     }

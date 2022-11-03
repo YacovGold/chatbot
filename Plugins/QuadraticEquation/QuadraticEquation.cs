@@ -14,7 +14,7 @@ namespace QuadraticEquation
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Calculate a quadratic equation, Please enter entries of, type ' ' btween an integer: A B C:");
+                input.Callbacks.SendMessage(Resources.Plugins.QuadraticEquation_Welcome);
             }
             else
             {
@@ -28,7 +28,7 @@ namespace QuadraticEquation
                 if (d < 0)
                 {
                     input.Callbacks.EndSession();
-                    input.Callbacks.SendMessage("The above equation doesn't have any solution!");
+                    input.Callbacks.SendMessage(Resources.Plugins.QuadraticEquation_NoSolution);
                 }
                 else
                 {
@@ -40,11 +40,11 @@ namespace QuadraticEquation
 
                     if (d == 0)
                     {
-                        input.Callbacks.SendMessage("the first solution is: " + x1);
+                        input.Callbacks.SendMessage(string.Format(Resources.Plugins.QuadraticEquation_OneResult, x1));
                     }
                     x2 = ((-1) * b - shoresh) / (2 * a);
                     input.Callbacks.EndSession();
-                    input.Callbacks.SendMessage($"the first solution is:{x1}, the second solution is: {x2}");
+                    input.Callbacks.SendMessage(string.Format(Resources.Plugins.QuadraticEquation_TowResult,x1,x2));
                 }
             }
         }

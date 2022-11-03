@@ -14,12 +14,12 @@ namespace Factorial
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("insert the number to calculate its factorial");
+                input.Callbacks.SendMessage(Resources.Plugins.Factorial_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("calculat factorial stopeed..");
+                input.Callbacks.SendMessage(Resources.Plugins.Factorial_Stopped);
             }
             else
             {
@@ -31,7 +31,7 @@ namespace Factorial
                 {
                     result *= i;
                 }
-                input.Callbacks.SendMessage($"The factorial is: {result}");
+                input.Callbacks.SendMessage(string.Format(Resources.Plugins.Factorial_Res ,result));
             }
         }
     }

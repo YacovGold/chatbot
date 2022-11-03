@@ -16,12 +16,12 @@ namespace Echo
             if (input.Message == "")
             {
                 input.Callbacks.StartSession();
-                input.Callbacks.SendMessage("Echo started. Enter 'Exit' to stop.");
+                input.Callbacks.SendMessage(Resources.Plugins.Echo_Welcome);
             }
             else if (input.Message.ToLower() == "exit")
             {
                 input.Callbacks.EndSession();
-                input.Callbacks.SendMessage("Echo stopped.");
+                input.Callbacks.SendMessage(Resources.Plugins.Echo_Stopped);
             }
             else
             {
